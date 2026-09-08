@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emma Basic - Liv Ryley</title>
+  <link rel="stylesheet" href="project.css">
+</head>
+<body class="emma-basic">
+  <nav class="topbar">
+    <a href="../Liv%20Ryley%20-%20Portfolio.html">Liv Ryley</a>
+    <a href="../Liv%20Ryley%20-%20Portfolio.html#index">Index ↗</a>
+  </nav>
+
+  <header class="hero">
+    <div class="kicker">Packaging · Artworking · Visual Systems · UI/UX</div>
+    <h1>Emma<br>Basic</h1>
+    <p class="intro">Sole designer at a premium food brand - <em>~5 products a day,</em> from artworking and packaging through to digital systems, marketing and launch logistics.</p>
+  </header>
+
+  <main>
+    <section class="process">
+      <article>
+        <div class="label">The problem</div>
+        <h2>High volume, one designer, no drop in quality.</h2>
+        <p>A premium food brand needs a constant stream of clear, retail-ready work across packaging, product, web and content - while every product drop stays coordinated across suppliers, retailers and customers.</p>
+      </article>
+      <article>
+        <div class="label">My role</div>
+        <h2>Building the system while shipping the work.</h2>
+        <p>I worked across concept, layout, packaging, digital design, art direction, artworking and iteration with manufacturers, content creators, chefs and production agencies across Asia.</p>
+      </article>
+      <article>
+        <div class="label">The outcome</div>
+        <h2>A brand that moves quickly without losing its calm.</h2>
+        <p>The system gave each product its own character while keeping the range recognisable, precise and ready to ship, supporting both existing customers and new audiences.</p>
+      </article>
+    </section>
+
+    <div class="statement">Many surfaces, one clear system. <span>Designed to scale.</span></div>
+
+    <section class="role-detail">
+      <h2>Designing the work, then making sure it works in the world.</h2>
+      <ul>
+        <li>Supplied product and packaging work to Selfridges, Harrods and Whole Foods.</li>
+        <li>Worked with content creators, chefs and manufacturers across Asia, keeping briefs, samples and product-drop logistics on track.</li>
+        <li>Designed Amazon A+ imagery and built a coherent marketing-video direction with production agencies, aligned to the website I designed.</li>
+        <li>Helped grow Instagram views from around 5,000 to more than 500,000 while serving existing customers and attracting new audiences.</li>
+        <li>Presented new product ideas and designs alone to the board every week, then delivered the approved work as finished artworking.</li>
+      </ul>
+    </section>
+
+    <p class="project-note"><strong>Content direction</strong>I designed storyboards for 25 SKUs, then briefed the production company on the animation language, pacing and feeling we were looking for. The boards gave the film team clear direction so they could execute their roles with confidence, while bringing together ideas from the wider Emma Basic team and keeping every piece consistent with the brand.</p>
+    <section class="storyboard-rail" aria-label="Emma Basic storyboard carousel">
+      <div class="storyboard-progress" aria-hidden="true"></div>
+      <figure><img src="../Media/Emma%20Basic/storyboard1.png" alt="Emma Basic storyboard one"></figure>
+      <figure><img src="../Media/Emma%20Basic/storyboard2.png" alt="Emma Basic storyboard two"></figure>
+      <figure><img src="../Media/Emma%20Basic/storyboard3.png" alt="Emma Basic storyboard three"></figure>
+      <figure><img src="../Media/Emma%20Basic/storyboard4.png" alt="Emma Basic storyboard four"></figure>
+      <figure><img src="../Media/Emma%20Basic/storyboard5.png" alt="Emma Basic storyboard five"></figure>
+      <figure><img src="../Media/Emma%20Basic/storyboard6.png" alt="Emma Basic storyboard six"></figure>
+    </section>
+
+    <p class="project-note"><strong>Digital system</strong>I designed and built the whole website, inputting data from Excel files to make sure the nutritional information was correct and genuinely useful. I created filters for gluten-free, high-protein and easy-to-snack products, making the site informative and educational as well as easy to navigate.</p>
+    <section class="website-gallery">
+      <div class="website-progress" aria-hidden="true"></div>
+      <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.09%E2%80%AFpm.png" alt="Emma Basic website landing page"></figure>
+      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.29%E2%80%AFpm.png" alt="Emma Basic website product range"></figure>
+      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.56%E2%80%AFpm.png" alt="Emma Basic website trade page"></figure>
+      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.35%E2%80%AFpm.png" alt="Emma Basic website interface detail"></figure>
+      <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.52%E2%80%AFpm.png" alt="Emma Basic website final page"></figure>
+    </section>
+
+    <p class="project-note"><strong>Product photography</strong>Working with photographer Mark Sims, I developed the smoked salmon presentation to bring restrained hints of gold into a premium product world, while keeping the brand grounded in its tightly controlled black-and-white palette.</p>
+    <section class="gallery two photography-section">
+      <figure class="wide"><img src="../Media/Emma%20Basic/photography1.png" alt="Emma Basic smoked salmon product photography"></figure>
+      <figure class="wide"><img src="../Media/Emma%20Basic/photography2.png" alt="Emma Basic sushi rice product photography"></figure>
+    </section>
+
+    <div class="next">
+      <a href="sqrd.html"><div class="label">Next project · 07</div><h2>sqrd ↗</h2></a>
+      <a href="../Liv%20Ryley%20-%20Portfolio.html#index"><div class="label">Return to index</div></a>
+    </div>
+  </main>
+  <script>
+    const websiteGallery = document.querySelector('.website-gallery');
+    const storyboardRail = document.querySelector('.storyboard-rail');
+    const animatedSections = document.querySelectorAll('.process, .role-detail, .statement, .project-note, .storyboard-rail, .website-gallery, .photography-section');
+    const updateWebsiteProgress = () => {
+      if (!websiteGallery) return;
+      const range = websiteGallery.scrollWidth - websiteGallery.clientWidth;
+      websiteGallery.style.setProperty('--carousel-progress', range ? websiteGallery.scrollLeft / range : 0);
+    };
+    websiteGallery?.addEventListener('scroll', updateWebsiteProgress, { passive: true });
+    websiteGallery?.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        event.preventDefault();
+        websiteGallery.scrollLeft += event.deltaY;
+      }
+    }, { passive: false });
+    updateWebsiteProgress();
+    const updateStoryboardProgress = () => {
+      if (!storyboardRail) return;
+      const range = storyboardRail.scrollWidth - storyboardRail.clientWidth;
+      storyboardRail.style.setProperty('--carousel-progress', range ? storyboardRail.scrollLeft / range : 0);
+    };
+    storyboardRail?.addEventListener('scroll', updateStoryboardProgress, { passive: true });
+    storyboardRail?.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+        event.preventDefault();
+        storyboardRail.scrollLeft += event.deltaY;
+      }
+    }, { passive: false });
+    updateStoryboardProgress();
+    if ('IntersectionObserver' in window) {
+      animatedSections.forEach((section) => section.classList.add('reveal-ready'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      animatedSections.forEach((section) => observer.observe(section));
+    }
+  </script>
+</body>
+</html>
