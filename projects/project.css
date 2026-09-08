@@ -35,10 +35,16 @@ a{color:inherit;text-decoration:none}
 .trax .kicker{color:#c4ff66}
 .trax .hero::after{border-color:#c4ff66}
 .trax .process .label{color:#c4ff66}
-.trax figcaption strong{color:#355314}
+.trax figcaption strong{color:#c4ff66}
 .trax .statement span{color:#355314}
+.trax .project-note strong{color:#355314}
 .trax .gallery figure.wide img,.trax .gallery figure.wide video{aspect-ratio:16/9}
 .trax .gallery .identity-stage{background:#101114}
+.trax .gallery figure.no-box{border:0;background:transparent}
+.trax .gallery figure.no-box img{aspect-ratio:auto;height:auto;object-fit:contain}
+.trax-banner{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:0;background:#101114}
+.trax-banner img{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto}
+@media(max-width:700px){.trax-banner img{max-height:40vh}}
 .kicker,.meta,.label{font:11px 'Spline Sans Mono',monospace;letter-spacing:.16em;text-transform:uppercase}
 .kicker{color:var(--red);border-top:1px solid rgba(243,239,231,.25);padding-top:18px;max-width:1400px;width:100%}
 h1{font-size:clamp(64px,14vw,220px);line-height:.82;letter-spacing:-.06em;margin:clamp(28px,5vh,60px) 0 0;max-width:1300px}
