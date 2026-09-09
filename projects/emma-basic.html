@@ -62,14 +62,16 @@
     </section>
 
     <p class="project-note"><strong>Digital system</strong>I designed and built the whole website, inputting data from Excel files to make sure the nutritional information was correct and genuinely useful. I created filters for gluten-free, high-protein and easy-to-snack products, making the site informative and educational as well as easy to navigate.</p>
-    <section class="website-gallery">
-      <div class="website-progress" aria-hidden="true"></div>
-      <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.09%E2%80%AFpm.png" alt="Emma Basic website landing page"></figure>
-      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.29%E2%80%AFpm.png" alt="Emma Basic website product range"></figure>
-      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.56%E2%80%AFpm.png" alt="Emma Basic website trade page"></figure>
-      <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.35%E2%80%AFpm.png" alt="Emma Basic website interface detail"></figure>
-      <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.52%E2%80%AFpm.png" alt="Emma Basic website final page"></figure>
-    </section>
+    <div class="website-scroll-stage">
+      <section class="website-gallery">
+        <div class="website-progress" aria-hidden="true"></div>
+        <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.09%E2%80%AFpm.png" alt="Emma Basic website landing page"></figure>
+        <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.29%E2%80%AFpm.png" alt="Emma Basic website product range"></figure>
+        <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%2010.00.56%E2%80%AFpm.png" alt="Emma Basic website trade page"></figure>
+        <figure><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.35%E2%80%AFpm.png" alt="Emma Basic website interface detail"></figure>
+        <figure class="wide"><img src="../Media/Emma%20Basic/Screenshot%202026-09-07%20at%209.59.52%E2%80%AFpm.png" alt="Emma Basic website final page"></figure>
+      </section>
+    </div>
 
     <p class="project-note"><strong>Product photography</strong>Working with photographer Mark Sims, I developed the smoked salmon presentation to bring restrained hints of gold into a premium product world, while keeping the brand grounded in its tightly controlled black-and-white palette.</p>
     <section class="gallery two photography-section">
@@ -84,21 +86,62 @@
   </main>
   <script>
     const websiteGallery = document.querySelector('.website-gallery');
+    const websiteStage = document.querySelector('.website-scroll-stage');
+    const websiteFigures = websiteGallery ? Array.from(websiteGallery.querySelectorAll('figure')) : [];
     const storyboardRail = document.querySelector('.storyboard-rail');
     const animatedSections = document.querySelectorAll('.process, .role-detail, .statement, .project-note, .storyboard-rail, .website-gallery, .photography-section');
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pinActive = !!(websiteGallery && websiteStage && !reduceMotion);
+    if (pinActive) websiteStage.classList.add('pin-active');
+
     const updateWebsiteProgress = () => {
       if (!websiteGallery) return;
       const range = websiteGallery.scrollWidth - websiteGallery.clientWidth;
       websiteGallery.style.setProperty('--carousel-progress', range ? websiteGallery.scrollLeft / range : 0);
     };
-    websiteGallery?.addEventListener('scroll', updateWebsiteProgress, { passive: true });
-    websiteGallery?.addEventListener('wheel', (event) => {
-      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-        event.preventDefault();
-        websiteGallery.scrollLeft += event.deltaY;
-      }
-    }, { passive: false });
-    updateWebsiteProgress();
+
+    const updateWebsiteScale = () => {
+      if (!websiteGallery || !websiteFigures.length) return;
+      const galleryRect = websiteGallery.getBoundingClientRect();
+      const centerX = galleryRect.left + galleryRect.width / 2;
+      const half = galleryRect.width / 2 || 1;
+      websiteFigures.forEach((fig) => {
+        const fr = fig.getBoundingClientRect();
+        const figCenter = fr.left + fr.width / 2;
+        const norm = Math.min(1, Math.abs(figCenter - centerX) / half);
+        fig.style.transform = 'scale(' + (1 - norm * 0.14).toFixed(3) + ')';
+        fig.style.opacity = (1 - norm * 0.4).toFixed(3);
+      });
+    };
+
+    if (pinActive) {
+      let rafPending = false;
+      const driveFromPageScroll = () => {
+        rafPending = false;
+        const rect = websiteStage.getBoundingClientRect();
+        const total = websiteStage.offsetHeight - window.innerHeight;
+        if (total <= 0) return;
+        const progress = Math.max(0, Math.min(1, -rect.top / total));
+        const maxScroll = websiteGallery.scrollWidth - websiteGallery.clientWidth;
+        websiteGallery.scrollLeft = progress * maxScroll;
+        updateWebsiteProgress();
+        updateWebsiteScale();
+      };
+      window.addEventListener('scroll', () => {
+        if (!rafPending) { rafPending = true; requestAnimationFrame(driveFromPageScroll); }
+      }, { passive: true });
+      window.addEventListener('resize', driveFromPageScroll);
+      driveFromPageScroll();
+    } else {
+      websiteGallery?.addEventListener('scroll', updateWebsiteProgress, { passive: true });
+      websiteGallery?.addEventListener('wheel', (event) => {
+        if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+          event.preventDefault();
+          websiteGallery.scrollLeft += event.deltaY;
+        }
+      }, { passive: false });
+      updateWebsiteProgress();
+    }
     const updateStoryboardProgress = () => {
       if (!storyboardRail) return;
       const range = storyboardRail.scrollWidth - storyboardRail.clientWidth;
