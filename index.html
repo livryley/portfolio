@@ -7,12 +7,12 @@
 <meta name="description" content="Olivia (Liv) Ryley — graphic designer working across digital systems, visual identity and artwork. Feeling, structured.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,700&family=Caveat:wght@600&family=Space+Mono:wght@700&family=Bebas+Neue&family=Oswald:wght@600&display=swap" rel="stylesheet">
 <style>
   *{ box-sizing:border-box; hyphens:none; }
   p{ text-wrap:pretty; }
   html{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; scroll-behavior:smooth; }
-  body{ margin:0; background:#16140f; color:#16140f; overflow-x:hidden; font-family:'Young Serif',serif; }
+  body{ margin:0; background:#16140f; color:#16140f; overflow-x:hidden; font-family:'Schibsted Grotesk',sans-serif; }
   ::selection{ background:#e8482b; color:#f4f1ea; }
   a{ color:inherit; }
   @keyframes marquee{ to{ transform:translateX(-50%); } }
@@ -46,10 +46,10 @@
   #idx-track{ display:flex; width:max-content; }
   #idx-viewport{ overflow-x:auto; overflow-y:hidden; scrollbar-width:none; -ms-overflow-style:none; }
   #idx-viewport::-webkit-scrollbar{ display:none; }
-  .idx-arrow{ width:46px; height:46px; border-radius:999px; border:1px solid rgba(244,241,234,0.3); background:transparent; color:#f4f1ea; font-family:'Young Serif',serif; font-size:22px; line-height:0; padding:0; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .25s ease, color .25s ease, border-color .25s ease; }
+  .idx-arrow{ width:46px; height:46px; border-radius:999px; border:1px solid rgba(244,241,234,0.3); background:transparent; color:#f4f1ea; font-family:'Schibsted Grotesk',sans-serif; font-size:22px; line-height:0; padding:0; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .25s ease, color .25s ease, border-color .25s ease; }
   .idx-arrow:hover{ background:#e8482b; color:#16140f; border-color:#e8482b; }
   .cl{ display:inline-flex; align-items:baseline; gap:10px; transition:color .45s ease, opacity .45s ease; }
-  .cl-name{ font-family:'Young Serif',serif; font-weight:600; letter-spacing:-0.025em; line-height:1.06; transition:color .45s ease; }
+  .cl-name{ font-family:'Schibsted Grotesk',sans-serif; font-weight:600; letter-spacing:-0.025em; line-height:1.06; transition:color .45s ease; }
   .cl-dot{ font-size:16px; color:rgba(232,72,43,0.55); }
   .cl.on .cl-name{ color:#f4f1ea; }
   .cl.off .cl-name{ color:rgba(244,241,234,0.22); }
@@ -81,7 +81,7 @@
     if(heroIv){ clearInterval(heroIv); heroIv=null; }
     cls('hero-rule','in'); cls('hero-kicker','in'); cls('hero-line1','in');
     var w=document.getElementById('hero-word');
-    if(w){ w.textContent='FEELING,'; w.style.transform='none'; }
+    if(w){ w.textContent='FEELING,'; w.style.transform='none'; w.style.fontFamily=''; w.style.fontStyle='normal'; }
     cls('hero-line2','show'); cls('hero-sub','show'); cls('marquee-bar','show'); cls('hero-foot','show');
   }
   function runHero(){
@@ -89,16 +89,21 @@
     cls('hero-rule','in'); cls('hero-kicker','in'); cls('hero-line1','in');
     var w=document.getElementById('hero-word'); if(!w){ finishHero(); return; }
     var words=['AN IDEA','A MEMORY','AN IDENTITY','A SONG','COMFORT','A CITY','A SUNSET','A TRIP','GRIEF','JOY'];
+    var fonts=["'Space Mono',monospace","'Caveat',cursive","'Oswald',sans-serif","'Playfair Display',serif","'Caveat',cursive","'Bebas Neue',sans-serif","'Playfair Display',serif","'Space Mono',monospace","'Caveat',cursive","'Bebas Neue',sans-serif"];
+    var styles=['normal','normal','normal','italic','normal','normal','italic','normal','normal','normal'];
     var i=0, total=18;
     setTimeout(function(){
       if(heroDone) return;
       heroIv=setInterval(function(){
         if(heroDone){ clearInterval(heroIv); heroIv=null; return; }
-        w.textContent=words[i%words.length];
+        var wi=i%words.length;
+        w.textContent=words[wi];
+        w.style.fontFamily=fonts[wi]; w.style.fontStyle=styles[wi];
         w.style.transform='translateY('+((i%2)?-7:7)+'px) skewX('+((i%2)?-3:3)+'deg)';
         i++;
         if(i>=total){
           clearInterval(heroIv); heroIv=null; w.textContent='FEELING,'; w.style.transform='none';
+          w.style.fontFamily=''; w.style.fontStyle='normal';
           cls('hero-line2','show');
           setTimeout(function(){ cls('hero-sub','show'); },260);
           setTimeout(function(){ cls('marquee-bar','show'); cls('hero-foot','show'); },520);
@@ -330,7 +335,7 @@
     <div id="hero-kicker" class="lbl" style="font-size:13px; letter-spacing:0.2em; color:#e8482b; margin-bottom:clamp(26px,5vh,54px); display:flex; gap:14px; align-items:center;">
       <span id="hero-rule" style="display:inline-block; width:36px; height:1px; background:#e8482b;"></span>
     </div>
-    <h1 style="margin:0; line-height:0.84; letter-spacing:-0.04em; font-weight:800; font-size:clamp(34px,11.2vw,184px); word-break:break-word;">
+    <h1 style="margin:0; line-height:0.87; letter-spacing:-0.04em; font-weight:800; font-size:clamp(34px,11.2vw,184px); word-break:break-word;">
       <span id="hero-line1" style="display:block;"><span id="hero-word" style="color:#f4f1ea;">FEELING,</span></span>
       <span id="hero-line2" style="display:block; color:#e8482b;">STRUCTURED.</span>
     </h1>
@@ -341,7 +346,7 @@
     </div>
     <div id="hero-foot" style="margin-top:auto; padding:40px 0 26px; display:flex; justify-content:space-between; align-items:center; font-family:'Instrument Sans',sans-serif; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,241,234,0.55); border-top:1px solid rgba(244,241,234,0.14);">
       <span>Scroll to begin</span>
-      <span style="font-family:'Young Serif'; font-size:18px; color:#e8482b;">↓</span>
+      <span style="font-family:'Schibsted Grotesk'; font-size:18px; color:#e8482b;">↓</span>
     </div>
   </section>
 
@@ -406,20 +411,20 @@
     </div>
     <div id="idx-viewport" style="overflow-x:auto; overflow-y:hidden; padding:0 clamp(20px,5vw,80px);">
       <div id="idx-track">
-        <div class="pcard"><div class="pcard-thumb thumb-work"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Checked In</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Product</span><span class="pchip">2024</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p2"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Trax</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Identity</span><span class="pchip">Type</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p3"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">ON: Scaled Up</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">D&AD</span><span class="pchip">UX</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p4"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Dissertation</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Editorial</span></div></div>
-        <div class="pcard"><div class="pcard-thumb" style="background:#2a2a28;"><video autoplay muted loop playsinline disablepictureinpicture style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;"><source src="Media/You%20are%20here/you%20are%20here%2011_9.mp4" type="video/mp4"></video></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">You Are Here</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Film</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p6"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Emma Basic</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Packaging</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p7"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">sqrd</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Freelance</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-work"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Checked In</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Product</span><span class="pchip">2024</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p2"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Trax</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Identity</span><span class="pchip">Type</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p3"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">ON: Scaled Up</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">D&AD</span><span class="pchip">UX</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p4"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Dissertation</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Editorial</span></div></div>
-        <div class="pcard"><div class="pcard-thumb" style="background:#2a2a28;"><video autoplay muted loop playsinline disablepictureinpicture style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;"><source src="Media/You%20are%20here/you%20are%20here%2011_9.mp4" type="video/mp4"></video></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">You Are Here</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Film</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p6"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Emma Basic</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Packaging</span></div></div>
-        <div class="pcard"><div class="pcard-thumb thumb-p7"></div><div class="pcard-title" style="margin-top:16px; font-family:'Young Serif'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">sqrd</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Freelance</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-work"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Checked In</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Product</span><span class="pchip">2024</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p2"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Trax</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Identity</span><span class="pchip">Type</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p3"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">ON: Scaled Up</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">D&AD</span><span class="pchip">UX</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p4"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Dissertation</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Editorial</span></div></div>
+        <div class="pcard"><div class="pcard-thumb" style="background:#2a2a28;"><video autoplay muted loop playsinline disablepictureinpicture style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;"><source src="Media/You%20are%20here/you%20are%20here%2011_9.mp4" type="video/mp4"></video></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">You Are Here</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Film</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p6"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Emma Basic</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Packaging</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p7"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">sqrd</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Freelance</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-work"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Checked In</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Product</span><span class="pchip">2024</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p2"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Trax</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Identity</span><span class="pchip">Type</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p3"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">ON: Scaled Up</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">D&AD</span><span class="pchip">UX</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p4"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Dissertation</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Editorial</span></div></div>
+        <div class="pcard"><div class="pcard-thumb" style="background:#2a2a28;"><video autoplay muted loop playsinline disablepictureinpicture style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;"><source src="Media/You%20are%20here/you%20are%20here%2011_9.mp4" type="video/mp4"></video></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">You Are Here</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Film</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p6"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">Emma Basic</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Packaging</span></div></div>
+        <div class="pcard"><div class="pcard-thumb thumb-p7"></div><div class="pcard-title" style="margin-top:16px; font-family:'Schibsted Grotesk'; font-weight:600; font-size:clamp(16px,1.4vw,19px); letter-spacing:-0.01em;">sqrd</div><div style="margin-top:13px; display:flex; gap:8px; flex-wrap:wrap;"><span class="pchip">Freelance</span></div></div>
       </div>
     </div>
   </section>

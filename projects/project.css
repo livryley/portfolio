@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap');
 
 :root{--ink:#171511;--paper:#f3efe7;--red:#e84a2d;--muted:#777067;--line:rgba(23,21,17,.18);--wash:#e7e2d6}
 *{box-sizing:border-box;hyphens:none}
 p{text-wrap:pretty}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:'Young Serif',serif;overflow-x:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Schibsted Grotesk',sans-serif;overflow-x:hidden}
 body.checked-in{--red:#df5b91;--wash:#edf1f8}
 body.trax{--red:#355314;--wash:#16181b;--paper:#f0eee8;--ink:#101114}
 body.on{--red:#a4e94f;--wash:#e5eef2}
@@ -59,13 +59,15 @@ main{background:var(--paper)}
 .sqrd-gallery{max-width:1340px;margin:0 auto;padding:clamp(10px,2vh,30px) clamp(20px,5vw,80px) 0;display:flex;flex-direction:column;gap:clamp(64px,11vw,150px)}
 .sqrd-gallery figure{margin:0;border:0;background:transparent}
 .sqrd-gallery img,.sqrd-gallery video{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;background:transparent}
+.sqrd-gallery img,.sqrd-gallery video{max-height:88vh;margin:0 auto}
 .sqrd-gallery figcaption{padding:0;margin-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;font:10px 'Instrument Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
 .sqrd-gallery figcaption strong{font-weight:500;color:var(--red)}
 .sqrd-divider{font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red);border-top:2px solid var(--ink);padding-top:20px;margin-top:12px}
 .sqrd-blurb{max-width:640px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-lead{max-width:920px}
-.sqrd-pair{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);align-items:end}
-.sqrd-pair figure:last-child{transform:translateY(clamp(20px,4vw,60px))}
+.sqrd-logo-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,48px);max-width:480px;margin:0 auto}
+.sqrd-logo-stack figure{width:100%}
+.sqrd-pair{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
 .sqrd-portrait{max-width:600px;margin:0 auto}
 .sqrd-portrait img{aspect-ratio:2/3;object-fit:cover}
 .sqrd-close video{aspect-ratio:16/9;object-fit:cover}
@@ -75,7 +77,15 @@ main{background:var(--paper)}
 .sqrd-pan-stage.pin-active .sqrd-pan-window{position:sticky;top:15vh}
 .sqrd-pan-window img{position:absolute;top:0;left:0;height:100%;width:auto;max-width:none;display:block}
 @media(max-width:700px){.sqrd-pan-window{height:42vh}.sqrd-pan-stage.pin-active .sqrd-pan-window{top:10vh}}
-@media(max-width:700px){.sqrd-pair{grid-template-columns:1fr;gap:32px}.sqrd-pair figure:last-child{transform:none}}
+@media(max-width:700px){.sqrd-pair{grid-template-columns:1fr;gap:32px}}
+.sqrd-apple-stage{position:relative}
+.sqrd-apple-stage.pin-active{height:280vh}
+.sqrd-apple-stage.pin-active .sqrd-apple-rail{position:sticky;top:0;overflow-x:hidden;scroll-snap-type:none}
+.sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
+.sqrd-apple-rail::-webkit-scrollbar{display:none}
+.sqrd-apple-rail figure{transition:transform .2s ease,opacity .2s ease;will-change:transform,opacity;position:relative;z-index:1;flex:0 0 50vw;margin:0;scroll-snap-align:start;border:0;background:var(--paper);overflow:hidden;height:92vh}
+.sqrd-apple-rail figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;background:var(--paper);display:block}
+@media(max-width:900px){.sqrd-apple-rail figure{flex:0 0 100vw;height:64vh}}
 .sqrd-zoom-stage{position:relative}
 .sqrd-zoom-stage.pin-active{height:220vh}
 .sqrd-zoom-window{position:relative;overflow:hidden;height:70vh;background:var(--paper)}
