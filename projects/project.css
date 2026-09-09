@@ -39,10 +39,8 @@ a{color:inherit;text-decoration:none}
 .trax figcaption strong{color:#c4ff66}
 .trax .statement span{color:#355314}
 .trax .project-note strong{color:#355314}
-.trax .gallery figure.wide img,.trax .gallery figure.wide video{aspect-ratio:16/9}
-.trax .gallery .identity-stage{background:#101114}
-.trax .gallery figure.no-box{border:0;background:transparent}
-.trax .gallery figure.no-box img{aspect-ratio:auto;height:auto;object-fit:contain}
+.trax .gallery figure{border:0;background:transparent}
+.trax .gallery figure img,.trax .gallery figure video{aspect-ratio:auto;height:auto;object-fit:contain;background:transparent}
 .trax-banner{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:0;background:#101114}
 .trax-banner img{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto}
 @media(max-width:700px){.trax-banner img{max-height:40vh}}
