@@ -51,15 +51,17 @@
     </section>
 
     <p class="project-note"><strong>Content direction</strong>I designed storyboards for 25 SKUs, then briefed the production company on the animation language, pacing and feeling we were looking for. The boards gave the film team clear direction so they could execute their roles with confidence, while bringing together ideas from the wider Emma Basic team and keeping every piece consistent with the brand.</p>
-    <section class="storyboard-rail" aria-label="Emma Basic storyboard carousel">
-      <div class="storyboard-progress" aria-hidden="true"></div>
-      <figure><img src="../Media/Emma%20Basic/storyboard1.png" alt="Emma Basic storyboard one"></figure>
-      <figure><img src="../Media/Emma%20Basic/storyboard2.png" alt="Emma Basic storyboard two"></figure>
-      <figure><img src="../Media/Emma%20Basic/storyboard3.png" alt="Emma Basic storyboard three"></figure>
-      <figure><img src="../Media/Emma%20Basic/storyboard4.png" alt="Emma Basic storyboard four"></figure>
-      <figure><img src="../Media/Emma%20Basic/storyboard5.png" alt="Emma Basic storyboard five"></figure>
-      <figure><img src="../Media/Emma%20Basic/storyboard6.png" alt="Emma Basic storyboard six"></figure>
-    </section>
+    <div class="storyboard-scroll-stage">
+      <section class="storyboard-rail" aria-label="Emma Basic storyboard carousel">
+        <div class="storyboard-progress" aria-hidden="true"></div>
+        <figure><img src="../Media/Emma%20Basic/storyboard1.png" alt="Emma Basic storyboard one"></figure>
+        <figure><img src="../Media/Emma%20Basic/storyboard2.png" alt="Emma Basic storyboard two"></figure>
+        <figure><img src="../Media/Emma%20Basic/storyboard3.png" alt="Emma Basic storyboard three"></figure>
+        <figure><img src="../Media/Emma%20Basic/storyboard4.png" alt="Emma Basic storyboard four"></figure>
+        <figure><img src="../Media/Emma%20Basic/storyboard5.png" alt="Emma Basic storyboard five"></figure>
+        <figure><img src="../Media/Emma%20Basic/storyboard6.png" alt="Emma Basic storyboard six"></figure>
+      </section>
+    </div>
 
     <p class="project-note"><strong>Digital system</strong>I designed and built the whole website, inputting data from Excel files to make sure the nutritional information was correct and genuinely useful. I created filters for gluten-free, high-protein and easy-to-snack products, making the site informative and educational as well as easy to navigate.</p>
     <div class="website-scroll-stage">
@@ -75,8 +77,8 @@
 
     <p class="project-note"><strong>Product photography</strong>Working with photographer Mark Sims, I developed the smoked salmon presentation to bring restrained hints of gold into a premium product world, while keeping the brand grounded in its tightly controlled black-and-white palette.</p>
     <section class="gallery two photography-section">
-      <figure class="wide"><img src="../Media/Emma%20Basic/photography1.png" alt="Emma Basic smoked salmon product photography"></figure>
-      <figure class="wide"><img src="../Media/Emma%20Basic/photography2.png" alt="Emma Basic sushi rice product photography"></figure>
+      <figure><img src="../Media/Emma%20Basic/photography1.png" alt="Emma Basic smoked salmon product photography"></figure>
+      <figure><img src="../Media/Emma%20Basic/photography2.png" alt="Emma Basic sushi rice product photography"></figure>
     </section>
 
     <div class="next">
@@ -85,76 +87,64 @@
     </div>
   </main>
   <script>
-    const websiteGallery = document.querySelector('.website-gallery');
-    const websiteStage = document.querySelector('.website-scroll-stage');
-    const websiteFigures = websiteGallery ? Array.from(websiteGallery.querySelectorAll('figure')) : [];
-    const storyboardRail = document.querySelector('.storyboard-rail');
     const animatedSections = document.querySelectorAll('.process, .role-detail, .statement, .project-note, .storyboard-rail, .website-gallery, .photography-section');
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const pinActive = !!(websiteGallery && websiteStage && !reduceMotion);
-    if (pinActive) websiteStage.classList.add('pin-active');
 
-    const updateWebsiteProgress = () => {
-      if (!websiteGallery) return;
-      const range = websiteGallery.scrollWidth - websiteGallery.clientWidth;
-      websiteGallery.style.setProperty('--carousel-progress', range ? websiteGallery.scrollLeft / range : 0);
-    };
-
-    const updateWebsiteScale = () => {
-      if (!websiteGallery || !websiteFigures.length) return;
-      const galleryRect = websiteGallery.getBoundingClientRect();
-      const centerX = galleryRect.left + galleryRect.width / 2;
-      const half = galleryRect.width / 2 || 1;
-      websiteFigures.forEach((fig) => {
-        const fr = fig.getBoundingClientRect();
-        const figCenter = fr.left + fr.width / 2;
-        const norm = Math.min(1, Math.abs(figCenter - centerX) / half);
-        fig.style.transform = 'scale(' + (1 - norm * 0.14).toFixed(3) + ')';
-        fig.style.opacity = (1 - norm * 0.4).toFixed(3);
-      });
-    };
-
-    if (pinActive) {
-      let rafPending = false;
-      const driveFromPageScroll = () => {
-        rafPending = false;
-        const rect = websiteStage.getBoundingClientRect();
-        const total = websiteStage.offsetHeight - window.innerHeight;
-        if (total <= 0) return;
-        const progress = Math.max(0, Math.min(1, -rect.top / total));
-        const maxScroll = websiteGallery.scrollWidth - websiteGallery.clientWidth;
-        websiteGallery.scrollLeft = progress * maxScroll;
-        updateWebsiteProgress();
-        updateWebsiteScale();
+    function setupScrollCarousel(rail, stage) {
+      if (!rail) return;
+      const figures = Array.from(rail.querySelectorAll('figure'));
+      const updateProgress = () => {
+        const range = rail.scrollWidth - rail.clientWidth;
+        rail.style.setProperty('--carousel-progress', range ? rail.scrollLeft / range : 0);
       };
-      window.addEventListener('scroll', () => {
-        if (!rafPending) { rafPending = true; requestAnimationFrame(driveFromPageScroll); }
-      }, { passive: true });
-      window.addEventListener('resize', driveFromPageScroll);
-      driveFromPageScroll();
-    } else {
-      websiteGallery?.addEventListener('scroll', updateWebsiteProgress, { passive: true });
-      websiteGallery?.addEventListener('wheel', (event) => {
-        if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-          event.preventDefault();
-          websiteGallery.scrollLeft += event.deltaY;
-        }
-      }, { passive: false });
-      updateWebsiteProgress();
-    }
-    const updateStoryboardProgress = () => {
-      if (!storyboardRail) return;
-      const range = storyboardRail.scrollWidth - storyboardRail.clientWidth;
-      storyboardRail.style.setProperty('--carousel-progress', range ? storyboardRail.scrollLeft / range : 0);
-    };
-    storyboardRail?.addEventListener('scroll', updateStoryboardProgress, { passive: true });
-    storyboardRail?.addEventListener('wheel', (event) => {
-      if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-        event.preventDefault();
-        storyboardRail.scrollLeft += event.deltaY;
+      const updateScale = () => {
+        if (!figures.length) return;
+        const railRect = rail.getBoundingClientRect();
+        const centerX = railRect.left + railRect.width / 2;
+        const half = railRect.width / 2 || 1;
+        figures.forEach((fig) => {
+          const fr = fig.getBoundingClientRect();
+          const figCenter = fr.left + fr.width / 2;
+          const norm = Math.min(1, Math.abs(figCenter - centerX) / half);
+          fig.style.transform = 'scale(' + (1 - norm * 0.14).toFixed(3) + ')';
+          fig.style.opacity = (1 - norm * 0.4).toFixed(3);
+        });
+      };
+      const pinActive = !!(stage && !reduceMotion);
+      if (pinActive) {
+        stage.classList.add('pin-active');
+        let rafPending = false;
+        const driveFromPageScroll = () => {
+          rafPending = false;
+          const rect = stage.getBoundingClientRect();
+          const total = stage.offsetHeight - window.innerHeight;
+          if (total <= 0) return;
+          const progress = Math.max(0, Math.min(1, -rect.top / total));
+          const maxScroll = rail.scrollWidth - rail.clientWidth;
+          rail.scrollLeft = progress * maxScroll;
+          updateProgress();
+          updateScale();
+        };
+        window.addEventListener('scroll', () => {
+          if (!rafPending) { rafPending = true; requestAnimationFrame(driveFromPageScroll); }
+        }, { passive: true });
+        window.addEventListener('resize', driveFromPageScroll);
+        driveFromPageScroll();
+      } else {
+        rail.addEventListener('scroll', updateProgress, { passive: true });
+        rail.addEventListener('wheel', (event) => {
+          if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+            event.preventDefault();
+            rail.scrollLeft += event.deltaY;
+          }
+        }, { passive: false });
+        updateProgress();
       }
-    }, { passive: false });
-    updateStoryboardProgress();
+    }
+
+    setupScrollCarousel(document.querySelector('.website-gallery'), document.querySelector('.website-scroll-stage'));
+    setupScrollCarousel(document.querySelector('.storyboard-rail'), document.querySelector('.storyboard-scroll-stage'));
+
     if ('IntersectionObserver' in window) {
       animatedSections.forEach((section) => section.classList.add('reveal-ready'));
       const observer = new IntersectionObserver((entries) => {
