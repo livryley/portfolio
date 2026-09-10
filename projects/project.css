@@ -84,7 +84,7 @@ main{background:var(--paper)}
 .sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
 .sqrd-apple-rail::-webkit-scrollbar{display:none}
 .sqrd-apple-rail figure{transition:transform .2s ease,opacity .2s ease;will-change:transform,opacity;position:relative;z-index:1;flex:0 0 50vw;margin:0;scroll-snap-align:start;border:0;background:var(--paper);overflow:hidden;height:92vh}
-.sqrd-apple-rail figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;background:var(--paper);display:block}
+.sqrd-apple-rail figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;background:var(--paper);display:block}
 @media(max-width:900px){.sqrd-apple-rail figure{flex:0 0 100vw;height:64vh}}
 .sqrd-zoom-stage{position:relative}
 .sqrd-zoom-stage.pin-active{height:220vh}
