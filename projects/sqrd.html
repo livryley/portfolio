@@ -78,18 +78,18 @@
       if (reduceMotion) { img.style.left = '50%'; img.style.transform = 'translateX(-50%)'; return; }
       stage.classList.add('pin-active');
       var maxTranslate = 0;
+      var rafPending = false;
       function measure(){
+        if (!(img.naturalWidth && img.naturalHeight)) return;
         var winRect = win.getBoundingClientRect();
-        var renderedWidth = img.naturalWidth && img.naturalHeight
-          ? winRect.height * (img.naturalWidth / img.naturalHeight)
-          : img.getBoundingClientRect().width;
+        var renderedWidth = winRect.height * (img.naturalWidth / img.naturalHeight);
         maxTranslate = Math.max(0, renderedWidth - winRect.width);
-        var extraVh = Math.min(140, Math.max(60, (maxTranslate / window.innerWidth) * 100));
+        var extraVh = Math.min(180, Math.max(80, (maxTranslate / window.innerWidth) * 100)) + 30;
         stage.style.height = (100 + extraVh) + 'vh';
+        drive();
       }
       if (img.complete) measure(); else img.addEventListener('load', measure);
       window.addEventListener('resize', measure);
-      var rafPending = false;
       function drive(){
         rafPending = false;
         var rect = stage.getBoundingClientRect();

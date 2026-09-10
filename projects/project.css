@@ -40,8 +40,9 @@ a{color:inherit;text-decoration:none}
 .trax figcaption strong{color:#c4ff66}
 .trax .statement span{color:#355314}
 .trax .project-note strong{color:#355314}
-.trax .gallery figure{border:0;background:transparent}
+.trax figure{border:0;background:transparent}
 .trax .gallery figure img,.trax .gallery figure video{aspect-ratio:auto;height:auto;object-fit:contain;background:transparent}
+.trax .gallery video{max-height:85vh;width:auto;max-width:100%;margin:0 auto}
 .trax-banner{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:0;background:#101114}
 .trax-banner img{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto}
 @media(max-width:700px){.trax-banner img{max-height:40vh}}

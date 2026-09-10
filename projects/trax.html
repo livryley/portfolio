@@ -77,11 +77,17 @@
 
     <p class="project-note"><strong>Craft / type made in-house</strong>The typeface was drawn specifically for Trax. It gives the identity a voice that belongs to the project rather than borrowing one from a library.</p>
 
+    <div class="storyboard-scroll-stage">
+      <section class="storyboard-rail" aria-label="Trax applied identity carousel">
+        <div class="storyboard-progress" aria-hidden="true"></div>
+        <figure><img src="../Media/Trax/typeface.png" alt="Trax custom typeface made by Liv Ryley"><figcaption><strong>11</strong><span>Custom typeface - made by me</span></figcaption></figure>
+        <figure><img src="../Media/Trax/screenappmockup.png" alt="Trax app screen mockup"><figcaption><strong>12</strong><span>Digital touchpoint</span></figcaption></figure>
+        <figure><img src="../Media/Trax/tshirt.png" alt="Trax T-shirt application"><figcaption><strong>13</strong><span>Wearable identity</span></figcaption></figure>
+        <figure><img src="../Media/Trax/Screenshot%202025-12-19%20at%204.11.32%E2%80%AFpm.png" alt="Trax application detail"><figcaption><strong>14</strong><span>Detail study</span></figcaption></figure>
+      </section>
+    </div>
+
     <section class="gallery two">
-      <figure class="wide"><img src="../Media/Trax/typeface.png" alt="Trax custom typeface made by Liv Ryley"><figcaption><strong>11 / typeface1</strong><span>Custom typeface - made by me</span></figcaption></figure>
-      <figure class="wide no-box"><img src="../Media/Trax/screenappmockup.png" alt="Trax app screen mockup"><figcaption><strong>12 / app1</strong><span>Digital touchpoint</span></figcaption></figure>
-      <figure><img src="../Media/Trax/tshirt.png" alt="Trax T-shirt application"><figcaption><strong>13 / tshirt1</strong><span>Wearable identity</span></figcaption></figure>
-      <figure><img src="../Media/Trax/Screenshot%202025-12-19%20at%204.11.32%E2%80%AFpm.png" alt="Trax application detail"><figcaption><strong>14 / application1</strong><span>Detail study</span></figcaption></figure>
       <figure class="wide identity-stage">
         <video controls autoplay muted loop playsinline poster="../Media/Trax/tshirt.png">
           <source src="../Media/Trax/tshirtvideo.mp4" type="video/mp4">
@@ -95,5 +101,60 @@
       <a href="../Media/Trax/trax%20poster%20design.psd"><div class="label">Open poster source ↗</div></a>
     </div>
   </main>
+  <script>
+    (function(){
+      var rail = document.querySelector('.storyboard-rail');
+      var stage = document.querySelector('.storyboard-scroll-stage');
+      if (!rail) return;
+      var figures = Array.from(rail.querySelectorAll('figure'));
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function updateProgress(){
+        var range = rail.scrollWidth - rail.clientWidth;
+        rail.style.setProperty('--carousel-progress', range ? rail.scrollLeft / range : 0);
+      }
+      function updateScale(){
+        if (!figures.length) return;
+        var railRect = rail.getBoundingClientRect();
+        var centerX = railRect.left + railRect.width / 2;
+        var half = railRect.width / 2 || 1;
+        figures.forEach(function(fig){
+          var fr = fig.getBoundingClientRect();
+          var figCenter = fr.left + fr.width / 2;
+          var norm = Math.min(1, Math.abs(figCenter - centerX) / half);
+          fig.style.transform = 'scale(' + (1 - norm * 0.14).toFixed(3) + ')';
+          fig.style.opacity = (1 - norm * 0.4).toFixed(3);
+        });
+      }
+      var pinActive = !!(stage && !reduceMotion);
+      if (pinActive) {
+        stage.classList.add('pin-active');
+        var rafPending = false;
+        var drive = function(){
+          rafPending = false;
+          var rect = stage.getBoundingClientRect();
+          var total = stage.offsetHeight - window.innerHeight;
+          if (total <= 0) return;
+          var progress = Math.max(0, Math.min(1, -rect.top / total));
+          var maxScroll = rail.scrollWidth - rail.clientWidth;
+          rail.scrollLeft = progress * maxScroll;
+          updateProgress(); updateScale();
+        };
+        window.addEventListener('scroll', function(){
+          if (!rafPending) { rafPending = true; requestAnimationFrame(drive); }
+        }, { passive: true });
+        window.addEventListener('resize', drive);
+        setTimeout(drive, 300);
+      } else {
+        rail.addEventListener('scroll', updateProgress, { passive: true });
+        rail.addEventListener('wheel', function(event){
+          if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+            event.preventDefault();
+            rail.scrollLeft += event.deltaY;
+          }
+        }, { passive: false });
+        updateProgress();
+      }
+    })();
+  </script>
 </body>
 </html>
