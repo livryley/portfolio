@@ -140,6 +140,8 @@ figcaption strong{font-weight:500;color:var(--red)}
 .storyboard-rail figure img{aspect-ratio:16/9;background:var(--paper);object-fit:contain;height:clamp(220px,34vw,420px)}
 .storyboard-rail figcaption{background:var(--paper)}
 .emma-basic .storyboard-rail figure{transform:none;background:var(--paper);border:0}
+.trax .storyboard-rail figure{flex:0 0 min(88vw,860px)}
+.trax .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
 .emma-basic .storyboard-rail figcaption{display:none}
 .website-scroll-stage{position:relative}
 .website-scroll-stage.pin-active{height:260vh}
