@@ -70,6 +70,9 @@ main{background:var(--paper)}
 .sqrd-gallery figcaption strong{font-weight:500;color:var(--red)}
 .sqrd-divider{font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red);border-top:2px solid var(--ink);padding-top:20px;margin-top:12px}
 .sqrd-blurb{max-width:640px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
+.sqrd-note{display:flex;flex-direction:column;justify-content:center;gap:12px}
+.sqrd-note h3{margin:0;font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.sqrd-note p{margin:0;max-width:420px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-lead{max-width:920px}
 .sqrd-logo-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,48px);max-width:480px;margin:0 auto}
 .sqrd-logo-stack figure{width:100%}
@@ -143,7 +146,8 @@ figcaption strong{font-weight:500;color:var(--red)}
 .storyboard-rail figure{position:relative;z-index:1;flex:0 0 min(72vw,560px);scroll-snap-align:start;background:var(--paper);border:0}
 .storyboard-rail figure img{aspect-ratio:16/9;background:var(--paper);object-fit:contain;height:clamp(220px,34vw,420px)}
 .storyboard-rail figcaption{background:var(--paper)}
-.emma-basic .storyboard-rail figure{transform:none;background:var(--paper);border:0}
+.emma-basic .storyboard-rail figure{transform:none;background:var(--paper);border:0;flex:0 0 min(88vw,860px)}
+.emma-basic .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
 .trax .storyboard-rail figure{flex:0 0 min(88vw,860px)}
 .trax .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
 .emma-basic .storyboard-rail figcaption{display:none}
