@@ -15,27 +15,19 @@
   body{ margin:0; background:#16140f; color:#16140f; overflow-x:hidden; font-family:'Schibsted Grotesk',sans-serif; }
   ::selection{ background:#e8482b; color:#f4f1ea; }
   a{ color:inherit; }
-  @keyframes marquee{ to{ transform:translateX(-50%); } }
 
   #hero-rule{ transform:scaleX(0); transform-origin:left; transition:transform .9s cubic-bezier(.2,.8,.2,1) .15s; }
   #hero-rule.in{ transform:scaleX(1); }
   #hero-kicker{ opacity:0; transform:translateY(10px); transition:opacity .7s ease .35s, transform .7s ease .35s; }
   #hero-kicker.in{ opacity:1; transform:none; }
-  #hero-word{ display:inline-block; transition:transform .09s ease; }
+  #hero-word{ display:inline-block; filter:blur(0px); opacity:1; transform:scale(1); transition:filter .15s ease, opacity .15s ease, transform .15s ease; }
+  #hero-word.pulling{ filter:blur(18px); opacity:0.25; transform:scale(1.14); }
   #hero-line1{ opacity:0; transform:translateY(40px); transition:opacity .8s cubic-bezier(.2,.8,.2,1) .5s, transform .8s cubic-bezier(.2,.8,.2,1) .5s; }
   #hero-line1.in{ opacity:1; transform:none; }
   #hero-line2{ clip-path:inset(0 100% 0 0); opacity:0; transition:clip-path 1.05s cubic-bezier(.2,.75,.2,1), opacity .5s ease; }
   #hero-line2.show{ clip-path:inset(0 0 0 0); opacity:1; }
   #hero-sub{ opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease; }
   #hero-sub.show{ opacity:1; transform:none; }
-  #hero-foot{ opacity:0; transition:opacity .8s ease; }
-  #hero-foot.show{ opacity:1; }
-  #marquee-bar{ opacity:0; transform:translateY(100%); transition:opacity .7s ease, transform .9s cubic-bezier(.2,.8,.2,1); }
-  #marquee-bar.show{ opacity:1; transform:none; }
-
-  .mq{ display:inline-flex; white-space:nowrap; animation:marquee 42s linear infinite; will-change:transform; }
-  .mqi{ font-family:'Instrument Sans',sans-serif; font-weight:500; font-size:clamp(12px,1.35vw,16px); letter-spacing:0.32em; text-transform:uppercase; padding:0 1.55em; }
-  .mqs{ font-family:'Instrument Sans',sans-serif; font-size:9px; opacity:0.45; align-self:center; }
 
   .lbl{ font-family:'Instrument Sans',sans-serif; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; }
   .por-num{ font-family:'Instrument Sans',sans-serif; font-size:13px; letter-spacing:0.14em; color:#e8482b; margin-bottom:14px; }
@@ -78,38 +70,37 @@
   function cls(id,c){ var e=document.getElementById(id); if(e) e.classList.add(c); }
   function finishHero(){
     if(heroDone) return; heroDone=true;
-    if(heroIv){ clearInterval(heroIv); heroIv=null; }
+    if(heroIv){ clearTimeout(heroIv); heroIv=null; }
     cls('hero-rule','in'); cls('hero-kicker','in'); cls('hero-line1','in');
     var w=document.getElementById('hero-word');
-    if(w){ w.textContent='FEELING,'; w.style.transform='none'; w.style.fontFamily=''; w.style.fontStyle='normal'; }
-    cls('hero-line2','show'); cls('hero-sub','show'); cls('marquee-bar','show'); cls('hero-foot','show');
+    if(w){ w.textContent='FEELING,'; w.classList.remove('pulling'); }
+    cls('hero-line2','show'); cls('hero-sub','show');
   }
   function runHero(){
     if(heroRun) return; heroRun=true;
     cls('hero-rule','in'); cls('hero-kicker','in'); cls('hero-line1','in');
     var w=document.getElementById('hero-word'); if(!w){ finishHero(); return; }
     var words=['AN IDEA','A MEMORY','AN IDENTITY','A SONG','COMFORT','A CITY','A SUNSET','A TRIP','GRIEF','JOY'];
-    var fonts=["'Space Mono',monospace","'Caveat',cursive","'Oswald',sans-serif","'Playfair Display',serif","'Caveat',cursive","'Bebas Neue',sans-serif","'Playfair Display',serif","'Space Mono',monospace","'Caveat',cursive","'Bebas Neue',sans-serif"];
-    var styles=['normal','normal','normal','italic','normal','normal','italic','normal','normal','normal'];
-    var i=0, total=18;
-    setTimeout(function(){
+    var i=0, total=words.length;
+    function step(){
       if(heroDone) return;
-      heroIv=setInterval(function(){
-        if(heroDone){ clearInterval(heroIv); heroIv=null; return; }
-        var wi=i%words.length;
-        w.textContent=words[wi];
-        w.style.fontFamily=fonts[wi]; w.style.fontStyle=styles[wi];
-        w.style.transform='translateY('+((i%2)?-7:7)+'px) skewX('+((i%2)?-3:3)+'deg)';
+      w.classList.add('pulling');
+      heroIv=setTimeout(function(){
+        if(heroDone) return;
         i++;
         if(i>=total){
-          clearInterval(heroIv); heroIv=null; w.textContent='FEELING,'; w.style.transform='none';
-          w.style.fontFamily=''; w.style.fontStyle='normal';
+          w.textContent='FEELING,';
+          requestAnimationFrame(function(){ w.classList.remove('pulling'); });
           cls('hero-line2','show');
           setTimeout(function(){ cls('hero-sub','show'); },260);
-          setTimeout(function(){ cls('marquee-bar','show'); cls('hero-foot','show'); },520);
+          return;
         }
-      },112);
-    },650);
+        w.textContent=words[i];
+        requestAnimationFrame(function(){ w.classList.remove('pulling'); });
+        heroIv=setTimeout(step,190);
+      },150);
+    }
+    setTimeout(function(){ if(!heroDone) step(); },650);
   }
   function reveal(e){
     if(e.__s) return; e.__s=true;
@@ -184,15 +175,11 @@
     if(!vp||!track) return;
     var half=0; function measure(){ half=track.scrollWidth/2; } measure();
     window.addEventListener('resize',measure); setTimeout(measure,900);
-    var paused=false, resume=0;
-    vp.addEventListener('pointerenter',function(){ paused=true; });
-    vp.addEventListener('pointerleave',function(){ paused=false; });
-    vp.addEventListener('mouseleave',function(){ paused=false; });
-    vp.addEventListener('pointercancel',function(){ paused=false; });
+    var resume=0;
     function step(){
       var now=Date.now();
       if(now>resume){
-        if(!paused) vp.scrollLeft+=0.7;
+        vp.scrollLeft+=0.7;
         if(half){ if(vp.scrollLeft>=half) vp.scrollLeft-=half; else if(vp.scrollLeft<0) vp.scrollLeft+=half; }
       }
       requestAnimationFrame(step);
@@ -344,19 +331,7 @@
         I take what you can only feel — an idea, a memory, an identity, the comfort of a shoe, a song — and give it a structure to live in. Seven projects follow.
       </p>
     </div>
-    <div id="hero-foot" style="margin-top:auto; padding:40px 0 26px; display:flex; justify-content:space-between; align-items:center; font-family:'Instrument Sans',sans-serif; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(244,241,234,0.55); border-top:1px solid rgba(244,241,234,0.14);">
-      <span>Scroll to begin</span>
-      <span style="font-family:'Schibsted Grotesk'; font-size:18px; color:#e8482b;">↓</span>
-    </div>
   </section>
-
-  <!-- ===== MARQUEE ===== -->
-  <div id="marquee-bar" style="background:#e8482b; color:#16140f; overflow:hidden; padding:17px 0;">
-    <div class="mq">
-      <span class="mqi">Identity</span><span class="mqs">●</span><span class="mqi">Digital&nbsp;Systems</span><span class="mqs">●</span><span class="mqi">Editorial</span><span class="mqs">●</span><span class="mqi">Packaging</span><span class="mqs">●</span><span class="mqi">Film</span><span class="mqs">●</span><span class="mqi">Artwork</span><span class="mqs">●</span>
-      <span class="mqi">Identity</span><span class="mqs">●</span><span class="mqi">Digital&nbsp;Systems</span><span class="mqs">●</span><span class="mqi">Editorial</span><span class="mqs">●</span><span class="mqi">Packaging</span><span class="mqs">●</span><span class="mqi">Film</span><span class="mqs">●</span><span class="mqi">Artwork</span><span class="mqs">●</span>
-    </div>
-  </div>
 
   <!-- ===== THROUGH-LINE ===== -->
   <section style="background:#f4f1ea;">
@@ -402,7 +377,6 @@
     <div data-reveal style="opacity:0; transform:translateY(30px); max-width:1400px; margin:0 auto; padding:20px clamp(20px,5vw,80px) 0; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; border-top:1px solid rgba(244,241,234,0.2); margin-bottom:clamp(28px,5vh,52px);">
       <div>
         <span class="lbl" style="color:#e8482b; display:block;">Index — Selected work</span>
-        <span class="lbl" style="color:rgba(244,241,234,0.62); display:block; margin-top:10px;">Seven projects · auto-scrolls · hover to pause</span>
       </div>
       <div style="display:flex; gap:10px; flex:none;">
         <button id="idx-prev" class="idx-arrow" aria-label="Previous projects">&#8249;</button>
