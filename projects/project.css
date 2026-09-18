@@ -92,6 +92,8 @@ main{background:var(--paper)}
 @media(max-width:700px){.sqrd-pan-window{height:42vh}.sqrd-pan-stage.pin-active .sqrd-pan-window{top:10vh}}
 @media(max-width:700px){.sqrd-pair{grid-template-columns:1fr;gap:32px}}
 .sqrd-apple-stage{position:relative}
+.sqrd-logo-stack + .sqrd-apple-stage{margin-top:clamp(-100px,-8vw,-40px)}
+.sqrd-apple-stage + .sqrd-note{margin-top:clamp(-100px,-8vw,-40px)}
 .sqrd-apple-stage.pin-active{height:280vh}
 .sqrd-apple-stage.pin-active .sqrd-apple-rail{position:sticky;top:0;overflow-x:hidden;scroll-snap-type:none}
 .sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
@@ -152,6 +154,8 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .storyboard-rail figcaption{background:var(--paper)}
 .emma-basic .storyboard-rail figure{transform:none;background:var(--paper);border:0;flex:0 0 min(88vw,860px)}
 .emma-basic .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
+.trax .gallery figure:nth-child(2),.trax .gallery figure:nth-child(4){transform:none}
+.trax .sqrd-apple-stage{margin-bottom:clamp(40px,6vh,80px)}
 .trax .storyboard-rail figure{flex:0 0 min(88vw,860px);background:transparent}
 .trax .storyboard-rail figure img{background:transparent}
 .trax .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
