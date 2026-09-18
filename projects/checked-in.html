@@ -40,7 +40,7 @@
 
     <div class="statement">The camera roll keeps the evidence. <span>Checked In keeps the feeling.</span></div>
 
-    <section class="gallery two">
+    <section class="gallery two lead-gallery">
       <figure class="wide">
         <img src="../Media/Checked%20In/Titlepage.png" alt="Checked In exhibition booklet front page">
         <figcaption><strong>01 / titlepage1</strong><span>Booklet front page</span></figcaption>
@@ -84,22 +84,8 @@
       var stage = document.querySelector('.sqrd-apple-stage');
       var rail = document.querySelector('.sqrd-apple-rail');
       if (!stage || !rail) return;
-      var figures = Array.from(rail.querySelectorAll('figure'));
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function updateScale(){
-        if (!figures.length) return;
-        var railRect = rail.getBoundingClientRect();
-        var centerX = railRect.left + railRect.width / 2;
-        var half = railRect.width / 2 || 1;
-        figures.forEach(function(fig){
-          var fr = fig.getBoundingClientRect();
-          var figCenter = fr.left + fr.width / 2;
-          var norm = Math.min(1, Math.abs(figCenter - centerX) / half);
-          fig.style.transform = 'scale(' + (1 - norm * 0.1).toFixed(3) + ')';
-          fig.style.opacity = (1 - norm * 0.3).toFixed(3);
-        });
-      }
-      if (reduceMotion) { updateScale(); return; }
+      if (reduceMotion) { return; }
       stage.classList.add('pin-active');
       var rafPending = false;
       function drive(){
@@ -110,7 +96,6 @@
         var progress = Math.max(0, Math.min(1, -rect.top / total));
         var maxScroll = rail.scrollWidth - rail.clientWidth;
         rail.scrollLeft = progress * maxScroll;
-        updateScale();
       }
       window.addEventListener('scroll', function(){
         if (!rafPending) { rafPending = true; requestAnimationFrame(drive); }
