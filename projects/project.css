@@ -125,13 +125,14 @@ main{background:var(--paper)}
 .checked-in .lead-gallery figure:first-child{grid-column:1/-1}
 .checked-in .lead-gallery figure:first-child img{aspect-ratio:16/9;object-fit:contain}
 .checked-in .sqrd-apple-rail{gap:2cm}
-.gallery.spread{gap:0}
+.gallery.spread{gap:0;align-items:stretch}
 .gallery.spread figure{position:relative}
 .gallery.spread figure:first-child::after{content:'';position:absolute;top:0;right:0;bottom:0;width:1px;background:var(--line)}
 strong.callout{font-weight:600;color:var(--ink)}
 .process strong.callout{color:var(--paper)}
 .checked-in .gallery.two:not(.lead-gallery) figure{height:auto;overflow:visible}
 .checked-in .gallery.two:not(.lead-gallery) figure img{width:100%;height:56vh;aspect-ratio:auto;object-fit:contain}
+.checked-in .gallery.two.spread:not(.lead-gallery) figure img{object-fit:cover}
 @media(max-width:700px){.checked-in .gallery.two:not(.lead-gallery) figure img{height:34vh}}
 .checked-in figure,.on figure{background:transparent;border:0}
 .checked-in figure img,.checked-in figure video,.on figure img,.on figure video{background:transparent}
