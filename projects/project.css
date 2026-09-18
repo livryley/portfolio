@@ -154,10 +154,13 @@ figure.wide img,figure.wide video{aspect-ratio:16/9}
 .on .statement + section.gallery{margin-top:0}
 .on .project-note{margin-top:clamp(64px,9vh,120px);margin-bottom:clamp(64px,9vh,120px)}
 .on .sqrd-apple-stage{margin-top:clamp(40px,6vh,80px)}
+.on .sqrd-apple-rail figure{height:60vh}
+@media(max-width:900px){.on .sqrd-apple-rail figure{height:48vh}}
 @media(max-width:700px){.on .gallery.two figure:not(.wide) img{height:32vh}}
 .you-are-here .gallery figure video{padding:0}
 .gallery figure:nth-child(2){transform:translateY(clamp(18px,4vw,70px))}
 .gallery figure:nth-child(4){transform:translateY(clamp(-18px,-2vw,-8px))}
+.gallery.two figure:nth-child(2){transform:none}
 figcaption{padding:16px 18px 18px;margin-top:2px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 14px;font:10px 'Instrument Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 figcaption strong{font-weight:500;color:var(--red-text)}
 .trax .gallery figcaption,.checked-in .gallery figcaption,.on .gallery figcaption{border-top:1px solid var(--line)}
