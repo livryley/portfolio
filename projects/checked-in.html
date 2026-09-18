@@ -50,22 +50,74 @@
     <div class="project-note"><h3>Context / booklet front page</h3><p>Booklet front page for an exhibition: a printed guide that explains why Checked In exists, how the app works, and how a personal memory becomes a newspaper issue.</p></div>
 
     <section class="gallery two">
-      <figure><img src="../Media/Checked%20In/Mockup1.png" alt="Checked In app mockup one"><figcaption><strong>02 / mockup1</strong><span>First product iteration</span></figcaption></figure>
-      <figure><img src="../Media/Checked%20In/Mockup2.png" alt="Checked In app mockup two"><figcaption><strong>03 / mockup2</strong><span>Conversation flow</span></figcaption></figure>
-      <figure><img src="../Media/Checked%20In/Mockup3.png" alt="Checked In app mockup three"><figcaption><strong>04 / mockup3</strong><span>Interface iteration</span></figcaption></figure>
-      <figure><img src="../Media/Checked%20In/Mockup4.png" alt="Checked In app mockup four"><figcaption><strong>05 / mockup4</strong><span>Editorial system</span></figcaption></figure>
-      <figure><img src="../Media/Checked%20In/Mockup5.png" alt="Checked In app mockup five"><figcaption><strong>06 / mockup5</strong><span>Prototype refinement</span></figcaption></figure>
+      <figure><img src="../Media/Checked%20In/Mockup1.png" alt="Checked In app mockup one"><figcaption><strong>02 / mockup1</strong><span>Mood check-in</span></figcaption></figure>
+      <figure><img src="../Media/Checked%20In/Mockup2.png" alt="Checked In app mockup two"><figcaption><strong>03 / mockup2</strong><span>Travel Buddy</span></figcaption></figure>
     </section>
 
+    <div class="project-note"><h3>Feel first. Write later.</h3><p>Start each day by checking in with your mood. Your emotional state helps shape how your story is told, because memory isn't just about what happened, but how it felt. This helps us aid your good days and bad days.</p></div>
+
+    <div class="project-note"><h3>Meet your Travel Buddy</h3><p>A thoughtful AI companion that chats with you throughout your trip, asking questions, storing memories, and capturing how the moment felt. Later, it uses everything you've shared to help write your personalised travel newspaper, so you can feel all of those moments again.</p></div>
+
+    <div class="sqrd-apple-stage">
+      <div class="sqrd-apple-rail">
+        <figure><img src="../Media/Checked%20In/Mockup3.png" alt="Checked In app mockup three"></figure>
+        <figure><img src="../Media/Checked%20In/Mockup4.png" alt="Checked In app mockup four"></figure>
+        <figure><img src="../Media/Checked%20In/Mockup5.png" alt="Checked In app mockup five"></figure>
+      </div>
+    </div>
+    <div class="sqrd-zoom-captions" style="max-width:1340px;margin:16px auto 0;padding:0 clamp(20px,5vw,80px)"><strong>04 / 06</strong><span>The design is yours - from fonts and colours to layout and mood, every detail is customisable, so your newspaper looks just as personal as the memories inside it.</span></div>
+
     <section class="gallery two" style="margin-top:clamp(90px,14vh,180px)">
-      <figure class="wide"><img src="../Media/Checked%20In/Newspaperfinal.png" alt="Checked In finished newspaper issue"><figcaption><strong>07 / newspaper1</strong><span>Editorial output</span></figcaption></figure>
-      <figure class="wide"><img src="../Media/Checked%20In/Postergraphic.png" alt="Checked In exhibition poster graphic"><figcaption><strong>08 / poster1</strong><span>Exhibition campaign language</span></figcaption></figure>
+      <figure><img src="../Media/Checked%20In/Newspaperfinal.png" alt="Checked In finished newspaper issue"><figcaption><strong>07 / newspaper1</strong><span>Editorial output</span></figcaption></figure>
+      <figure><img src="../Media/Checked%20In/Postergraphic.png" alt="Checked In exhibition poster graphic"><figcaption><strong>08 / poster1</strong><span>Exhibition campaign language</span></figcaption></figure>
     </section>
+
+    <div class="project-note"><h3>Don't forget what it felt like</h3><p>Once your newspaper is ready, you can print it, share it digitally, or keep it just for you. Want to tweak something after it's done? You can - every edition stays editable until it feels just right for you. The story isn't finished until you say it is, because you decide how your story is told.</p></div>
 
     <div class="next">
       <a href="trax.html"><div class="label">Next project · 02</div><h2>Trax ↗</h2></a>
       <a href="../index.html#index"><div class="label">Return to index</div></a>
     </div>
   </main>
+  <script>
+    (function(){
+      var stage = document.querySelector('.sqrd-apple-stage');
+      var rail = document.querySelector('.sqrd-apple-rail');
+      if (!stage || !rail) return;
+      var figures = Array.from(rail.querySelectorAll('figure'));
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function updateScale(){
+        if (!figures.length) return;
+        var railRect = rail.getBoundingClientRect();
+        var centerX = railRect.left + railRect.width / 2;
+        var half = railRect.width / 2 || 1;
+        figures.forEach(function(fig){
+          var fr = fig.getBoundingClientRect();
+          var figCenter = fr.left + fr.width / 2;
+          var norm = Math.min(1, Math.abs(figCenter - centerX) / half);
+          fig.style.transform = 'scale(' + (1 - norm * 0.1).toFixed(3) + ')';
+          fig.style.opacity = (1 - norm * 0.3).toFixed(3);
+        });
+      }
+      if (reduceMotion) { updateScale(); return; }
+      stage.classList.add('pin-active');
+      var rafPending = false;
+      function drive(){
+        rafPending = false;
+        var rect = stage.getBoundingClientRect();
+        var total = stage.offsetHeight - window.innerHeight;
+        if (total <= 0) return;
+        var progress = Math.max(0, Math.min(1, -rect.top / total));
+        var maxScroll = rail.scrollWidth - rail.clientWidth;
+        rail.scrollLeft = progress * maxScroll;
+        updateScale();
+      }
+      window.addEventListener('scroll', function(){
+        if (!rafPending) { rafPending = true; requestAnimationFrame(drive); }
+      }, { passive: true });
+      window.addEventListener('resize', drive);
+      setTimeout(drive, 300);
+    })();
+  </script>
 </body>
 </html>

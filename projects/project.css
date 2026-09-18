@@ -16,7 +16,10 @@ body.dissertation .hero h1{white-space:nowrap;font-size:clamp(58px,12vw,190px)}
 @media(max-width:520px){body.dissertation .hero h1{white-space:normal;font-size:clamp(40px,15vw,190px)}}
 .dissertation-gallery{max-width:none;margin:0;padding:0;display:block}
 .dissertation-gallery figure{border:0;background:var(--paper);overflow:hidden}
-.dissertation-gallery figure img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;background:var(--paper)}
+.dissertation-gallery figure img{display:block;width:100%;max-width:760px;margin:0 auto;height:auto;aspect-ratio:auto;object-fit:contain;background:var(--paper)}
+.dissertation .sqrd-apple-rail figure{height:60vh}
+.dissertation .sqrd-zoom-window{height:56vh}
+@media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:48vh}}
 .dissertation-gallery figcaption{max-width:1340px;margin:0 auto;padding:16px clamp(20px,5vw,80px) 26px;background:var(--paper)}
 body:has(img[src*="Checked%20In"]){--red:#df5b91;--wash:#edf1f8}
 body:has(img[src*="Trax"]){--red:#c4ff66;--wash:#16181b;--paper:#f0eee8;--ink:#101114}
@@ -78,6 +81,9 @@ main{background:var(--paper)}
 .sqrd-note h3{margin:0;font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text)}
 .sqrd-note p{margin:0;max-width:420px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-lead{max-width:920px}
+.sqrd-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.sqrd-duo figure{margin:0;border:0;background:transparent}
+@media(max-width:700px){.sqrd-duo{grid-template-columns:1fr;gap:20px}}
 .sqrd-logo-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,48px);max-width:480px;margin:0 auto}
 .sqrd-logo-stack figure{width:100%}
 .sqrd-pair{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
@@ -112,6 +118,8 @@ main{background:var(--paper)}
 @media(max-width:700px){.sqrd-zoom-window{height:50vh}.sqrd-zoom-stage.pin-active .sqrd-zoom-window{top:10vh}}
 .checked-in .gallery figure:first-child{grid-column:1/-1}
 .checked-in .gallery figure:first-child img{aspect-ratio:16/9;object-fit:contain}
+.checked-in figure,.on figure{background:transparent;border:0}
+.checked-in figure img,.checked-in figure video,.on figure img,.on figure video{background:transparent}
 .gallery{max-width:1340px;margin:0 auto;padding:0 clamp(20px,5vw,80px);display:grid;gap:clamp(18px,3vw,42px)}
 .gallery.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .gallery.three{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -183,4 +191,5 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .next .label{color:var(--red-text)}
 .next h2{font-size:clamp(34px,7vw,100px);line-height:.88;letter-spacing:-.05em;margin:18px 0 0}
 .next a:last-child{text-align:right}
-@media(max-width:700px){.gallery{padding:0 20px}.gallery.two,.gallery.three{grid-template-columns:1fr}.gallery figure:nth-child(2),.gallery figure:nth-child(4){transform:none}.process{grid-template-columns:1fr;margin-top:80px}.next{align-items:start;flex-direction:column}.next a:last-child{text-align:left}.topbar{position:absolute}.hero::after{right:20px;bottom:36px}}
+@media(max-width:700px){.gallery{padding:0 20px;gap:14px}.gallery.two,.gallery.three{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery figure:nth-child(2),.gallery figure:nth-child(4){transform:none}figure img,figure video{max-height:42vh}.checked-in .gallery figure:first-child img{max-height:none}.process{grid-template-columns:1fr;margin-top:80px}.next{align-items:start;flex-direction:column}.next a:last-child{text-align:left}.topbar{position:absolute}.hero::after{right:20px;bottom:36px}.sqrd-gallery{gap:clamp(40px,10vw,64px)}.sqrd-gallery img,.sqrd-gallery video{max-height:56vh}.sqrd-portrait img{aspect-ratio:3/4}.sqrd-apple-rail figure{height:52vh}.sqrd-zoom-window{height:50vh}.sqrd-zoom-stage.pin-active .sqrd-zoom-window{top:8vh}}
+@media(max-width:480px){.gallery.two,.gallery.three{grid-template-columns:1fr}figure img,figure video{max-height:48vh}}
