@@ -220,7 +220,41 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 @media(max-width:600px){.role-detail ul{grid-template-columns:1fr}}
 .next{max-width:1340px;margin:0 auto;padding:clamp(60px,10vh,120px) clamp(20px,8vw,80px);display:flex;justify-content:space-between;gap:24px;align-items:end;border-top:1px solid var(--line)}
 .next .label{color:var(--red-text)}
-.next h2{font-size:clamp(34px,7vw,100px);line-height:.88;letter-spacing:-.05em;margin:18px 0 0}
+.next h2{font-size:clamp(34px,7vw,100px);line-height:.88;letter-spacing:-.05em;margin:18px 0 0;transition:color .25s ease,transform .25s cubic-bezier(.2,.8,.2,1)}
 .next a:last-child{text-align:right}
+.next a:hover h2{color:var(--red-text);transform:translateX(4px)}
+.next a:last-child:hover h2{transform:translateX(-4px)}
 @media(max-width:700px){.gallery{padding:0 20px;gap:14px}.gallery.two,.gallery.three{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery figure:nth-child(2),.gallery figure:nth-child(4){transform:none}figure img,figure video{max-height:42vh}.checked-in .lead-gallery figure:first-child img{max-height:none}.process{grid-template-columns:1fr;margin-top:80px}.next{align-items:start;flex-direction:column}.next a:last-child{text-align:left}.topbar{position:absolute}.hero::after{right:20px;bottom:36px}.sqrd-gallery{gap:clamp(40px,10vw,64px)}.sqrd-gallery img,.sqrd-gallery video{max-height:56vh}.sqrd-portrait img{aspect-ratio:3/4}.sqrd-apple-rail figure{height:52vh}.sqrd-zoom-window{height:50vh}.sqrd-zoom-stage.pin-active .sqrd-zoom-window{top:8vh}}
 @media(max-width:480px){.gallery.two,.gallery.three{grid-template-columns:1fr}figure img,figure video{max-height:48vh}}
+
+/* Mobile-only refinements (max-width:700px) - deliberately scoped so laptop/desktop layout is untouched */
+@media(max-width:700px){
+  /* 1. Compact grids: three-column stacked galleries become a swipeable horizontal strip instead of an endless single column */
+  .gallery.three{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding-left:20px;padding-right:20px;-webkit-overflow-scrolling:touch}
+  .gallery.three::-webkit-scrollbar{display:none}
+  .gallery.three figure{flex:0 0 78vw;scroll-snap-align:start}
+  .gallery.three figure img,.gallery.three figure video{max-height:60vh}
+
+  /* 2. Strict image height ceiling everywhere, so no single image forces a deep scroll to see it in full */
+  figure img,figure video,.sqrd-gallery img,.sqrd-gallery video,.dissertation-gallery figure img{max-height:60vh}
+  .sqrd-apple-rail figure,.sqrd-zoom-window,.storyboard-rail figure img,.website-gallery figure img{max-height:60vh}
+
+  /* 4. Tighter vertical rhythm: less section padding and smaller headings on mobile only */
+  .hero{padding-top:100px;padding-bottom:56px}
+  h1{font-size:clamp(48px,16vw,110px)}
+  .intro{margin-top:24px;font-size:clamp(19px,5vw,26px)}
+  .statement{padding-top:clamp(64px,10vh,110px);padding-bottom:clamp(64px,10vh,110px);font-size:clamp(32px,9vw,52px)}
+  .process{padding-top:clamp(48px,8vh,80px);padding-bottom:clamp(48px,8vh,80px)}
+  .process h2{font-size:clamp(20px,6vw,28px);margin:20px 0 12px}
+  .project-note{margin-top:clamp(40px,7vh,64px);margin-bottom:clamp(28px,5vh,48px)}
+  .sqrd-blurb{font-size:15px}
+}
+
+/* 3. Collapsible detail on mobile only - Emma Basic's long role list defaults open (unchanged content) but can be tucked away */
+.role-detail summary{display:none}
+@media(max-width:700px){
+  .role-detail summary{display:block;list-style:none;cursor:pointer;margin:-8px 0 20px;font:12px 'Instrument Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--red-text)}
+  .role-detail summary::-webkit-details-marker{display:none}
+  .role-detail summary::after{content:'Hide the detail ↑'}
+  .role-detail details:not([open]) summary::after{content:'Show the detail ↓'}
+}
