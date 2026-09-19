@@ -21,11 +21,11 @@ body.dissertation .hero h1{white-space:nowrap;font-size:clamp(58px,12vw,190px)}
 .dissertation .sqrd-zoom-window{height:56vh}
 @media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:72vh}}
 @media(max-width:700px){.dissertation .sqrd-apple-rail figure{height:88vh}}
-.dissertation-gallery figcaption{max-width:1340px;margin:0 auto;padding:16px clamp(20px,5vw,80px) 26px;background:var(--paper)}
+.dissertation-gallery figcaption{max-width:1340px;margin:2px auto 0;padding:16px clamp(20px,5vw,80px) 26px;background:var(--paper);border-top:1px solid var(--line)}
 .dissertation-gallery.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);align-items:start;max-width:1340px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
 .dissertation-gallery.pair figure{margin:0}
 .dissertation-gallery.pair figure img{max-width:none;width:100%;height:56vh;object-fit:contain}
-.dissertation-gallery.pair figcaption{max-width:none;margin:0;padding:16px 0 0}
+.dissertation-gallery.pair figcaption{max-width:none;margin:2px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
 @media(max-width:700px){.dissertation-gallery.pair{grid-template-columns:1fr}}
 body:has(img[src*="Checked%20In"]){--red:#df5b91;--wash:#edf1f8}
 body:has(img[src*="Trax"]){--red:#c4ff66;--wash:#16181b;--paper:#f0eee8;--ink:#101114}
@@ -54,6 +54,8 @@ a{color:inherit;text-decoration:none}
 .trax .project-note h3{color:#355314}
 .trax figure{border:0;background:transparent}
 .trax .gallery figure img,.trax .gallery figure video{aspect-ratio:auto;height:auto;object-fit:contain;background:transparent}
+.trax .gallery-match-height figure img{height:60vh}
+@media(max-width:700px){.trax .gallery-match-height figure img{height:38vh}}
 .trax .gallery video{max-height:85vh;width:auto;max-width:100%;margin:0 auto}
 .trax .identity-stage video{border-radius:18px}
 .trax-banner{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:0;background:#101114}
@@ -109,6 +111,9 @@ main{background:var(--paper)}
 .sqrd-apple-stage.pin-active{height:280vh}
 .sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:70vw}
 @media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:100vw}}
+.sqrd-apple-stage-skincare .sqrd-apple-rail{gap:16px}
+.sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 62vw}
+@media(max-width:900px){.sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 100vw}}
 .sqrd-apple-stage.pin-active .sqrd-apple-rail{position:sticky;top:0;overflow-x:hidden;scroll-snap-type:none}
 .sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
 .sqrd-apple-rail::-webkit-scrollbar{display:none}
@@ -153,7 +158,7 @@ figure.wide{grid-column:1/-1}
 figure img,figure video{display:block;width:100%;height:100%;object-fit:contain;aspect-ratio:4/3;background:var(--wash)}
 figure.wide img,figure.wide video{aspect-ratio:16/9}
 .on .gallery.two figure:not(.wide) img{width:100%;height:52vh;aspect-ratio:auto;object-fit:cover;padding:0}
-.on .gallery.two figure.wide img,.on .gallery.two figure.wide video{aspect-ratio:16/9;height:auto;object-fit:cover}
+.on .gallery.two figure.wide img,.on .gallery.two figure.wide video{aspect-ratio:16/9;height:auto;object-fit:contain}
 .on section.gallery{margin-top:clamp(64px,9vh,120px)}
 .on .statement + section.gallery{margin-top:0}
 .on .project-note{margin-top:clamp(64px,9vh,120px);margin-bottom:clamp(64px,9vh,120px)}
