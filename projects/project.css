@@ -83,7 +83,7 @@ main{background:var(--paper)}
 .sqrd-divider{font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text);border-top:2px solid var(--ink);padding-top:20px;margin-top:12px}
 .sqrd-blurb{max-width:640px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-note{display:flex;flex-direction:column;justify-content:center;gap:12px}
-.sqrd-note h3{margin:0;font:12px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text)}
+.sqrd-note h3{margin:0;font:11px 'Instrument Sans',sans-serif;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--red-text)}
 .sqrd-note p{margin:0;max-width:420px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-lead{max-width:920px}
 .vogue-line{white-space:nowrap}
@@ -253,8 +253,8 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 /* 3. Collapsible detail on mobile only - Emma Basic's long role list defaults open (unchanged content) but can be tucked away */
 .role-detail summary{display:none}
 @media(max-width:700px){
-  .role-detail summary{display:block;list-style:none;cursor:pointer;margin:-8px 0 20px;font:12px 'Instrument Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--red-text)}
+  .role-detail summary{display:block;list-style:none;cursor:pointer;margin:0 0 18px;padding:0;font:12px 'Instrument Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--red-text)}
   .role-detail summary::-webkit-details-marker{display:none}
-  .role-detail summary::after{content:'Hide the detail ↑'}
-  .role-detail details:not([open]) summary::after{content:'Show the detail ↓'}
+  .role-detail summary::after{content:'Hide the detail ↑︎'}
+  .role-detail details:not([open]) summary::after{content:'Show the detail ↓︎'}
 }
