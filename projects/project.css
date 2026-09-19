@@ -17,10 +17,10 @@ body.dissertation .hero h1{white-space:nowrap;font-size:clamp(58px,12vw,190px)}
 .dissertation-gallery{max-width:none;margin:0;padding:0;display:block}
 .dissertation-gallery figure{border:0;background:var(--paper);overflow:hidden}
 .dissertation-gallery figure img{display:block;width:100%;max-width:760px;margin:0 auto;height:auto;aspect-ratio:auto;object-fit:contain;background:var(--paper)}
-.dissertation .sqrd-apple-rail figure{height:60vh}
+.dissertation .sqrd-apple-rail figure{height:90vh}
 .dissertation .sqrd-zoom-window{height:56vh}
-@media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:48vh}}
-@media(max-width:700px){.dissertation .sqrd-apple-rail figure{height:74vh}}
+@media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:72vh}}
+@media(max-width:700px){.dissertation .sqrd-apple-rail figure{height:88vh}}
 .dissertation-gallery figcaption{max-width:1340px;margin:0 auto;padding:16px clamp(20px,5vw,80px) 26px;background:var(--paper)}
 .dissertation-gallery.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);align-items:start;max-width:1340px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
 .dissertation-gallery.pair figure{margin:0}
