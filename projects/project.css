@@ -88,7 +88,7 @@ main{background:var(--paper)}
 .sqrd-note p{margin:0;max-width:420px;font:16px/1.7 'Instrument Sans',sans-serif;color:var(--muted)}
 .sqrd-lead{max-width:920px}
 .vogue-line{white-space:nowrap}
-@media(max-width:700px){.vogue-line{white-space:normal}}
+@media(max-width:960px){.vogue-line{white-space:normal}}
 .sqrd-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
 .sqrd-duo figure{margin:0;border:0;background:transparent}
 @media(max-width:700px){.sqrd-duo{grid-template-columns:1fr;gap:20px}}
@@ -180,7 +180,7 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .role-detail.reveal-ready.is-visible li{opacity:1;transform:none}
 .role-detail.reveal-ready li:nth-child(1){transition-delay:.25s}.role-detail.reveal-ready li:nth-child(2){transition-delay:.35s}.role-detail.reveal-ready li:nth-child(3){transition-delay:.45s}.role-detail.reveal-ready li:nth-child(4){transition-delay:.55s}.role-detail.reveal-ready li:nth-child(5){transition-delay:.65s}
 .role-detail h2{margin:0;font-size:clamp(30px,4vw,58px);line-height:.95;letter-spacing:-.04em}
-.role-detail p{margin:0;font:16px/1.75 'Instrument Sans',sans-serif;color:var(--muted);max-width:75ch}
+.role-detail p{margin:0;font:16px/1.75 'Instrument Sans',sans-serif;color:var(--muted);max-width:65ch}
 .role-detail ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 42px;font:16px/1.65 'Instrument Sans',sans-serif;color:var(--muted);max-width:none}
 .role-detail li{position:relative;padding-left:24px;margin:0 0 14px}
 .role-detail li::before{content:'↳';position:absolute;left:0;color:var(--red-text)}
