@@ -275,7 +275,7 @@
     var found=document.querySelectorAll('[data-reveal]');
     if(!found.length){ if(tries++<60) setTimeout(init,100); return; }
     els=found; pels=document.querySelectorAll('[data-parallax]'); dels=document.querySelectorAll('[data-drift]');
-    setWide(); initIndex(); initCarousel(); initClients();
+    setWide(); initIndex(); initClients();
     window.__startHero=runHero;
     stEls=document.querySelectorAll('[data-scrolltext]');
     window.addEventListener('scroll',onScroll,{passive:true});
@@ -300,6 +300,9 @@
   }
   if(document.readyState!=='loading') init();
   else document.addEventListener('DOMContentLoaded',init);
+  function startCarouselSafely(){ try{ initCarousel(); }catch(e){} }
+  if(document.readyState!=='loading') startCarouselSafely();
+  else document.addEventListener('DOMContentLoaded',startCarouselSafely);
 })();
 </script>
 </head>
