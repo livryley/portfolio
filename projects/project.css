@@ -107,6 +107,8 @@ main{background:var(--paper)}
 @media(max-width:700px){.sqrd-pair{grid-template-columns:1fr;gap:32px}}
 .sqrd-apple-stage{position:relative}
 .sqrd-apple-stage.pin-active{height:280vh}
+.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:70vw}
+@media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:100vw}}
 .sqrd-apple-stage.pin-active .sqrd-apple-rail{position:sticky;top:0;overflow-x:hidden;scroll-snap-type:none}
 .sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
 .sqrd-apple-rail::-webkit-scrollbar{display:none}
