@@ -93,7 +93,8 @@
         var rect = stage.getBoundingClientRect();
         var total = stage.offsetHeight - window.innerHeight;
         if (total <= 0) return;
-        var progress = Math.max(0, Math.min(1, -rect.top / total));
+        var trigger = window.innerHeight * 0.12;
+        var progress = Math.max(0, Math.min(1, (trigger - rect.top) / total));
         var maxScroll = rail.scrollWidth - rail.clientWidth;
         rail.scrollLeft = progress * maxScroll;
       }
