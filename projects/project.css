@@ -180,6 +180,13 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .process article{border-top:1px solid rgba(243,239,231,.25);padding-top:18px}
 .process h2{font-size:clamp(24px,3vw,42px);line-height:1;letter-spacing:-.03em;font-weight:600;margin:32px 0 18px}
 .process p{font:15px/1.7 'Instrument Sans',sans-serif;color:rgba(243,239,231,.62);margin:0}
+.process.process-duo{grid-template-columns:repeat(2,1fr)}
+.process.process-duo h2{font-size:clamp(26px,3.4vw,46px)}
+.process.process-narrative{grid-template-columns:1fr;max-width:900px}
+.process.process-narrative article{border-top:none;padding-top:0}
+.process.process-narrative h2{font-size:clamp(30px,4vw,52px);margin-top:0}
+.process.process-narrative p{font-size:17px;max-width:70ch}
+@media(max-width:700px){.process.process-duo{grid-template-columns:1fr}}
 .role-detail{max-width:1340px;margin:0 auto;padding:clamp(54px,8vh,100px) clamp(20px,8vw,80px);display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,56px);border:1px solid var(--line);background:color-mix(in srgb,var(--paper) 88%,var(--red));box-shadow:0 18px 50px rgba(23,21,17,.06)}
 .reveal-ready{opacity:0;transform:translateY(42px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal-ready.is-visible{opacity:1;transform:none}
