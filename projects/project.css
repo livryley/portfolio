@@ -110,7 +110,7 @@ main{background:var(--paper)}
 .sqrd-apple-stage{position:relative}
 .sqrd-apple-stage.pin-active{height:280vh}
 .sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:70vw}
-@media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:100vw;scroll-snap-align:start}}
+@media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:150vw;height:58vw;scroll-snap-align:start}}
 .sqrd-apple-stage-skincare .sqrd-apple-rail{gap:16px}
 .sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 62vw}
 @media(max-width:900px){.sqrd-apple-stage-skincare .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 100vw;scroll-snap-align:start}}
@@ -120,6 +120,7 @@ main{background:var(--paper)}
 .sqrd-apple-rail figure{transition:transform .2s ease,opacity .2s ease;will-change:transform,opacity;position:relative;z-index:1;flex:0 0 50vw;margin:0;scroll-snap-align:start;border:0;background:var(--paper);overflow:hidden;height:92vh}
 .sqrd-apple-rail figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;background:var(--paper);display:block}
 @media(max-width:900px){.sqrd-apple-rail figure{flex:0 0 150vw;height:112vw}}
+@media(max-width:900px){.sqrd-apple-stage-matchbox .sqrd-apple-rail figure{flex:0 0 100vw;height:100vw}}
 .sqrd-zoom-stage{position:relative}
 .sqrd-zoom-stage.pin-active{height:220vh}
 .sqrd-zoom-window{position:relative;overflow:hidden;height:70vh;background:var(--paper)}
@@ -203,6 +204,7 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .storyboard-rail figcaption{background:var(--paper)}
 .emma-basic .storyboard-rail figure{transform:none;background:var(--paper);border:0;flex:0 0 min(88vw,860px)}
 .emma-basic .storyboard-rail figure img{height:clamp(320px,50vw,620px)}
+@media(max-width:900px){.emma-basic .storyboard-rail figure{flex:0 0 150vw}.emma-basic .website-gallery figure{flex:0 0 150vw}}
 .trax .gallery figure:nth-child(2),.trax .gallery figure:nth-child(4){transform:none}
 .trax .sqrd-apple-stage{margin-bottom:clamp(40px,6vh,80px)}
 @media(max-width:700px){.trax .sqrd-apple-stage{margin-bottom:20px}}
