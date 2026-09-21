@@ -109,6 +109,7 @@ main{background:var(--paper)}
 @media(max-width:700px){.sqrd-pair{grid-template-columns:1fr;gap:32px}}
 .sqrd-apple-stage{position:relative}
 .sqrd-apple-stage.pin-active{height:280vh}
+.dissertation .sqrd-apple-stage.pin-active{height:150vh}
 .sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:70vw}
 @media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:150vw;height:58vw;scroll-snap-align:start}}
 .sqrd-apple-stage-skincare .sqrd-apple-rail{gap:16px}
