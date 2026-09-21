@@ -46,7 +46,7 @@ a{color:inherit;text-decoration:none}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,17,20,.94),rgba(16,17,20,.42) 58%,rgba(16,17,20,.7))}
 .hero-content{position:relative;z-index:1}
 .trax .kicker{color:#c4ff66}
-.trax .hero::after{border-color:#c4ff66}
+.trax .hero::after{border-color:#c4ff66;top:clamp(90px,16vh,170px);bottom:auto}
 .trax .process .label{color:#c4ff66}
 .trax figcaption strong{color:#355314}
 .trax-banner figcaption strong{color:#c4ff66}
