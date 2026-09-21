@@ -19,8 +19,8 @@ body.dissertation .hero h1{white-space:nowrap;font-size:clamp(58px,12vw,190px)}
 .dissertation-gallery figure img{display:block;width:100%;max-width:760px;margin:0 auto;height:auto;aspect-ratio:auto;object-fit:contain;background:var(--paper)}
 .dissertation .sqrd-apple-rail figure{height:90vh}
 .dissertation .sqrd-zoom-window{height:56vh}
-@media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:72vh}}
-@media(max-width:700px){.dissertation .sqrd-apple-rail figure{height:88vh}}
+@media(max-width:900px){.dissertation .sqrd-apple-rail figure{height:84vh}}
+@media(max-width:700px){.dissertation .sqrd-apple-rail figure{height:92vh}}
 .dissertation-gallery figcaption{max-width:1340px;margin:2px auto 0;padding:16px clamp(20px,5vw,80px) 26px;background:var(--paper);border-top:1px solid var(--line)}
 .dissertation-gallery.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);align-items:start;max-width:1340px;margin:0 auto;padding:0 clamp(20px,5vw,80px)}
 .dissertation-gallery.pair figure{margin:0}
@@ -59,8 +59,8 @@ a{color:inherit;text-decoration:none}
 .trax .gallery video{max-height:85vh;width:auto;max-width:100%;margin:0 auto}
 .trax .identity-stage video{border-radius:18px}
 .trax-banner{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:0;background:#101114}
-.trax-banner img{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto}
-@media(max-width:700px){.trax-banner img{max-height:40vh}}
+.trax-banner img,.trax-banner video{width:100%;height:auto;max-height:70vh;object-fit:contain;display:block;margin:0 auto}
+@media(max-width:700px){.trax-banner img,.trax-banner video{max-height:40vh}}
 .trax-full-bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;max-width:none;padding:clamp(30px,5vh,60px) 0;background:var(--paper)}
 .trax-full-bleed img{width:100%;height:auto;max-height:85vh;object-fit:contain;display:block;margin:0 auto}
 .trax-full-bleed figcaption{max-width:1340px;margin:16px auto 0;padding:0 clamp(20px,5vw,80px)}
@@ -110,16 +110,16 @@ main{background:var(--paper)}
 .sqrd-apple-stage{position:relative}
 .sqrd-apple-stage.pin-active{height:280vh}
 .sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:70vw}
-@media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:100vw}}
+@media(max-width:900px){.sqrd-apple-stage-lg .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-lg .sqrd-apple-rail figure{flex-basis:100vw;scroll-snap-align:start}}
 .sqrd-apple-stage-skincare .sqrd-apple-rail{gap:16px}
 .sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 62vw}
-@media(max-width:900px){.sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 100vw}}
+@media(max-width:900px){.sqrd-apple-stage-skincare .sqrd-apple-rail{padding:0;gap:0}.sqrd-apple-stage-skincare .sqrd-apple-figure-lg{flex:0 0 100vw;scroll-snap-align:start}}
 .sqrd-apple-stage.pin-active .sqrd-apple-rail{position:sticky;top:0;overflow-x:hidden;scroll-snap-type:none}
 .sqrd-apple-rail{position:relative;max-width:none;padding:0;margin:0;display:flex;align-items:stretch;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;background:var(--paper)}
 .sqrd-apple-rail::-webkit-scrollbar{display:none}
 .sqrd-apple-rail figure{transition:transform .2s ease,opacity .2s ease;will-change:transform,opacity;position:relative;z-index:1;flex:0 0 50vw;margin:0;scroll-snap-align:start;border:0;background:var(--paper);overflow:hidden;height:92vh}
 .sqrd-apple-rail figure img{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;background:var(--paper);display:block}
-@media(max-width:900px){.sqrd-apple-rail figure{flex:0 0 100vw;height:64vh}}
+@media(max-width:900px){.sqrd-apple-rail{gap:14px;padding:0 7vw;scroll-padding-left:7vw}.sqrd-apple-rail figure{flex:0 0 86vw;height:78vh;scroll-snap-align:center}}
 .sqrd-zoom-stage{position:relative}
 .sqrd-zoom-stage.pin-active{height:220vh}
 .sqrd-zoom-window{position:relative;overflow:hidden;height:70vh;background:var(--paper)}
@@ -164,8 +164,8 @@ figure.wide img,figure.wide video{aspect-ratio:16/9}
 .on .project-note{margin-top:clamp(64px,9vh,120px);margin-bottom:clamp(64px,9vh,120px)}
 .on .sqrd-apple-stage{margin-top:clamp(40px,6vh,80px)}
 .on .sqrd-apple-rail figure{height:78vh}
-@media(max-width:900px){.on .sqrd-apple-rail figure{height:62vh}}
-@media(max-width:700px){.on .sqrd-apple-rail figure{height:80vh}}
+@media(max-width:900px){.on .sqrd-apple-rail figure{height:80vh}}
+@media(max-width:700px){.on .sqrd-apple-rail figure{height:88vh}}
 @media(max-width:700px){.on .gallery.two figure:not(.wide) img{height:32vh}}
 .you-are-here .gallery figure video{padding:0}
 .gallery figure:nth-child(2){transform:translateY(clamp(18px,4vw,70px))}
@@ -234,7 +234,7 @@ figcaption strong{font-weight:500;color:var(--red-text)}
 .next a:last-child{text-align:right}
 .next a:hover h2{color:var(--red-text);transform:translateX(4px)}
 .next a:last-child:hover h2{transform:translateX(-4px)}
-@media(max-width:700px){.gallery{padding:0 20px;gap:14px}.gallery.two,.gallery.three{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery figure:nth-child(2),.gallery figure:nth-child(4){transform:none}figure img,figure video{max-height:42vh}.checked-in .lead-gallery figure:first-child img{max-height:none}.process{grid-template-columns:1fr;margin-top:80px}.next{align-items:start;flex-direction:column}.next a:last-child{text-align:left}.topbar{position:absolute}.hero::after{right:20px;bottom:36px}.sqrd-gallery{gap:clamp(40px,10vw,64px)}.sqrd-gallery img,.sqrd-gallery video{max-height:56vh}.sqrd-portrait img{aspect-ratio:3/4}.sqrd-apple-rail figure{height:78vh}.sqrd-zoom-window{height:74vh}.sqrd-zoom-stage.pin-active .sqrd-zoom-window{top:4vh}.sqrd-apple-stage.pin-active{height:170vh}.sqrd-zoom-stage.pin-active{height:160vh}}
+@media(max-width:700px){.gallery{padding:0 20px;gap:14px}.gallery.two,.gallery.three{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery figure:nth-child(2),.gallery figure:nth-child(4){transform:none}figure img,figure video{max-height:42vh}.checked-in .lead-gallery figure:first-child img{max-height:none}.process{grid-template-columns:1fr;margin-top:80px}.next{align-items:start;flex-direction:column}.next a:last-child{text-align:left}.topbar{position:absolute}.hero::after{right:20px;bottom:36px}.sqrd-gallery{gap:clamp(40px,10vw,64px)}.sqrd-gallery img,.sqrd-gallery video{max-height:56vh}.sqrd-portrait img{aspect-ratio:3/4}.sqrd-apple-rail figure{height:88vh}.sqrd-zoom-window{height:74vh}.sqrd-zoom-stage.pin-active .sqrd-zoom-window{top:4vh}.sqrd-apple-stage.pin-active{height:170vh}.sqrd-zoom-stage.pin-active{height:160vh}}
 @media(max-width:480px){.gallery.two,.gallery.three{grid-template-columns:1fr}figure img,figure video{max-height:48vh}}
 
 /* Mobile-only refinements (max-width:700px) - deliberately scoped so laptop/desktop layout is untouched */
@@ -260,7 +260,17 @@ figcaption strong{font-weight:500;color:var(--red-text)}
   .process h2{font-size:clamp(20px,6vw,28px);margin:20px 0 12px}
   .project-note{margin-top:clamp(40px,7vh,64px);margin-bottom:clamp(28px,5vh,48px)}
   .sqrd-blurb{font-size:15px}
+
+  /* 5. Swipe affordance: an animated nudge label on horizontally-scrollable strips so swiping reads as obvious, not accidental */
+  .gallery.three{position:relative}
+  .gallery.three::after{content:'Swipe';position:absolute;right:14px;bottom:14px;z-index:6;font:11px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f4f1ea;background:rgba(22,20,15,.7);padding:6px 12px;border-radius:999px;pointer-events:none;animation:swipe-nudge 1.6s ease-in-out infinite}
 }
+@media(max-width:900px){
+  .sqrd-apple-rail{position:relative}
+  .sqrd-apple-rail::after{content:'Swipe';position:absolute;right:14px;bottom:14px;z-index:6;font:11px 'Instrument Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f4f1ea;background:rgba(22,20,15,.7);padding:6px 12px;border-radius:999px;pointer-events:none;animation:swipe-nudge 1.6s ease-in-out infinite}
+}
+@keyframes swipe-nudge{0%,100%{transform:translateX(0);opacity:.85}50%{transform:translateX(-6px);opacity:.55}}
+@media(prefers-reduced-motion:reduce){.gallery.three::after,.sqrd-apple-rail::after{animation:none}}
 
 /* 3. Collapsible detail on mobile only - Emma Basic's long role list defaults open (unchanged content) but can be tucked away */
 .role-detail summary{display:none}
