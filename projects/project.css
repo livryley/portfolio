@@ -163,9 +163,9 @@ figure.wide img,figure.wide video{aspect-ratio:16/9}
 .on .statement + section.gallery{margin-top:0}
 .on .project-note{margin-top:clamp(64px,9vh,120px);margin-bottom:clamp(64px,9vh,120px)}
 .on .sqrd-apple-stage{margin-top:clamp(40px,6vh,80px)}
-.on .sqrd-apple-rail figure{height:60vh}
-@media(max-width:900px){.on .sqrd-apple-rail figure{height:48vh}}
-@media(max-width:700px){.on .sqrd-apple-rail figure{height:74vh}}
+.on .sqrd-apple-rail figure{height:78vh}
+@media(max-width:900px){.on .sqrd-apple-rail figure{height:62vh}}
+@media(max-width:700px){.on .sqrd-apple-rail figure{height:80vh}}
 @media(max-width:700px){.on .gallery.two figure:not(.wide) img{height:32vh}}
 .you-are-here .gallery figure video{padding:0}
 .gallery figure:nth-child(2){transform:translateY(clamp(18px,4vw,70px))}
