@@ -98,7 +98,9 @@ main{background:var(--paper)}
 .sqrd-logo-stack figure{width:100%}
 .someri-s-svg{display:block;width:100%;height:auto}
 .someri-s-svg path{stroke-dasharray:2850;stroke-dashoffset:2850;transition:stroke-dashoffset 2.4s cubic-bezier(.2,.7,.2,1)}
+.someri-s-svg .someri-s-patch{opacity:0;transition:opacity .25s ease;transition-delay:1.45s}
 .someri-s-figure.is-drawn .someri-s-svg path{stroke-dashoffset:0}
+.someri-s-figure.is-drawn .someri-s-svg .someri-s-patch{opacity:1}
 .sqrd-pair{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
 .sqrd-portrait{max-width:600px;margin:0 auto}
 .sqrd-portrait img{aspect-ratio:2/3;object-fit:cover}
