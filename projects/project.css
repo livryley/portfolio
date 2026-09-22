@@ -106,6 +106,7 @@ main{background:var(--paper)}
 .sqrd-pair{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
 .sqrd-portrait{max-width:600px;margin:0 auto}
 .sqrd-portrait img{aspect-ratio:2/3;object-fit:cover}
+.sqrd-portrait-nocrop img{object-fit:contain;background:transparent}
 .sqrd-close video{aspect-ratio:16/9;object-fit:cover}
 .sqrd-pan-stage{position:relative}
 .sqrd-pan-stage.pin-active{height:240vh}
