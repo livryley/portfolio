@@ -97,8 +97,8 @@ main{background:var(--paper)}
 .sqrd-logo-stack{display:flex;flex-direction:column;align-items:center;gap:clamp(28px,4vw,48px);max-width:480px;margin:0 auto}
 .sqrd-logo-stack figure{width:100%}
 .someri-s-svg{display:block;width:100%;height:auto}
-.someri-s-svg .someri-s-draw{stroke-dasharray:2850;stroke-dashoffset:2850;transition:stroke-dashoffset 1.3s linear, opacity .3s ease 1.3s}
-.someri-s-svg .someri-s-fill{opacity:0;transition:opacity .3s ease 1.25s}
+.someri-s-svg .someri-s-draw{stroke-dasharray:2850;stroke-dashoffset:2850;transition:stroke-dashoffset 1.3s linear, opacity .5s ease .6s}
+.someri-s-svg .someri-s-fill{opacity:0;transition:opacity .6s ease .5s}
 .someri-s-figure.is-drawn .someri-s-svg .someri-s-draw{stroke-dashoffset:0;opacity:0}
 .someri-s-figure.is-drawn .someri-s-svg .someri-s-fill{opacity:1}
 @media(prefers-reduced-motion:reduce){.someri-s-svg .someri-s-draw,.someri-s-svg .someri-s-fill{transition:none}}
